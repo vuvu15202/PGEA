@@ -1,0 +1,19 @@
+[{
+        "id": 1,
+        "name": "sys_admin",
+        "phone": "0981604050",
+        "email": "khangpq.vn@gmail.com",
+        "role": [],
+        "userType":1,
+        "gender": "male"
+    },
+    {
+        "id": 2,
+        "name": "admin",
+        "phone": "0981604050",
+        "email": "khangpq.vn@gmail.com",
+        "role": [],
+        "userType":2,
+        "gender": "male"
+    }
+]
