@@ -1,0 +1,24 @@
+{
+  "apps": [
+    {
+      "name": "admin_page",
+      "script": "./app.js",
+      "instances": 1,
+      "exec_mode": "cluster",
+      "watch": false,
+      "env": {
+        "MODE": "BACKJOB",
+        "NUM_OF_INSTANCE": 1,
+        "NODE_ENV": "production",
+        "PORT": 21895,
+        "BASE_URL": "https://backend.bombasticlearninghub.com",
+        "MONGO_DB": "mongodb://acc:pass@localhost:27017/ongbantat_prod",
+        "MYSQL_DB": "mysql://khangpq:35I-wDjzF0FrzRKw@34.125.217.193:3306/deploy_database",
+        "REDIS_HOST": "localhost",
+        "REDIS_PASS": "password",
+        "REDIS_PORT": 6379,
+        "REDIS_DB": 0
+      }
+    }
+  ]
+}
