@@ -1,12 +1,8 @@
 
 # 🌟 Page Generator Engine for Administration Website 🌟
 
-[![Framework: Sails.js](https://img.shields.io/badge/Framework-Sails.js-blue.svg?style=for-the-badge&logo=sails.js)](https://sailsjs.com/)
-[![Database: MySQL](https://img.shields.io/badge/Database-MySQL-green.svg?style=for-the-badge&logo=mysql)](https://www.mysql.com/)
 
 ## 📝 Overview
-
-**Page Generator Engine for Administration Website** is an open-source project designed to streamline the process of creating and managing administrative pages. Built with **JavaScript** and leveraging the **Sails.js** framework, this engine offers a flexible and scalable solution for developing robust administration websites. **MySQL** is used as the database to ensure reliable data management.
 
 ## 🚀 Features
 
@@ -29,7 +25,7 @@ Before you begin, ensure you have the following installed:
     ```bash
     git clone https://github.com/vuvu15202/PGEA.git
     cd PGEA
-    cd be
+    cd fe
     ```
 
 2. **Install Dependencies**:
@@ -59,7 +55,7 @@ Before you begin, ensure you have the following installed:
 
 4. **Run the Application**:
     ```bash
-    sails lift
+    npm run dev
     ```
 
 Your application should now be running on `http://localhost:1337`.
