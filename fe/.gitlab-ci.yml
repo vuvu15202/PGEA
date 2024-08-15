@@ -1,0 +1,51 @@
+variables:
+  IMAGE_NAME: nvashinki/pgea-fe-dev
+  IMAGE_TAG: 1.0.0
+
+stages:
+  - test
+  - build
+  - deploy
+
+run_tests:
+  stage: test
+  image: node:18-alpine
+  before_script:
+    - npm install
+  script:
+    - npm run lint
+
+.build:
+  stage: build
+  image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+  variables:
+   DOCKER_TLS_CERTDIR: "/certs"
+  before_script:
+   - docker login -u $DH_USERNAME -p $DH_PASSWORD
+  script:
+    - docker build -t $IMAGE_NAME:$IMAGE_TAG -f Dockerfile.stg .
+    - docker push $IMAGE_NAME:$IMAGE_TAG
+  only:
+    - develop
+
+build-dev:
+  extends: .build
+
+deploy:
+  stage: deploy
+  before_script:
+    - chmod 400 $SERVER_SSH_KEY
+  script:
+    - ssh -o StrictHostKeyChecking=no -i $SERVER_SSH_KEY root@194.233.71.80 "
+        docker login -u $DH_USERNAME -p $DH_PASSWORD &&
+        containers=\$(docker ps -q --filter ancestor=$IMAGE_NAME:$IMAGE_TAG) &&
+        if [ ! -z \"\$containers\" ]; then
+          docker stop \$containers &&
+          docker rm \$containers &&
+          docker rmi $IMAGE_NAME:$IMAGE_TAG;
+        fi &&
+        docker run -d -p 3000:3000 $IMAGE_NAME:$IMAGE_TAG"
+  only:
+    - develop
