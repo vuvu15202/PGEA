@@ -47,7 +47,7 @@ module.exports = async function (req, res, next) {
   if (
     !pageInfo.roles &&
     !pageInfo.roles.length > 0 &&
-    !_.intersection(pageInfo.roles, req.user.roles).length > 0
+    !_.intersection(pageInfo.roles, req.user.roleId).length > 0
   ) {
     return res.unauthorized({
       code: 1,
@@ -83,7 +83,7 @@ module.exports = async function (req, res, next) {
   if (
     !apiInfo.roles &&
     !pageInfo.roles.length &&
-    !_.intersection(req.user.roles, apiInfo.roles) > 0
+    !_.intersection(req.user.roleId, apiInfo.roles) > 0
   ) {
     return res.unauthorized({
       message: sails.__("Insufficient permissions to access the API!"),

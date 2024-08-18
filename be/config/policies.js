@@ -17,10 +17,10 @@ module.exports.policies = {
    *                                                                          *
    ***************************************************************************/
 
-  '*': ['getUserInfo', 'isAuthen', 'checkPermissionn', 'pageIdd', 'captcha'],
+  '*': ['getUserInfoVer2', 'isAuthen', 'checkPermissionn', 'pageIdd', 'captcha'],
   'auth/create-captcha': true,
   // 'auth/sign-in/account': true,//['captcha'],
-  'auth/sign-in/refresh-token': ['getUserInfo', 'isAuthen'],
+  'auth/sign-in/refresh-token': ['getUserInfoVer2', 'isAuthen'],
   'file/delete-file': true,
   // 'admin/refresh-conf': true,
   // 'admin/reset-cache': true,

@@ -17,21 +17,21 @@ module.exports.bootstrap = async function (done) {
     excludeDirs: /^\.(git|svn)$/
   });
 
-  // if (process.env.NODE_ENV !== 'production' && sails.config.port == 1337 && sails.config.models.migrate == 'drop') {
-  //   try {
-  //     try {
-  //       let sql = 'create unique index auth_key_type_uindex on auth (`key`, type);'
-  //       await sails.sendNativeQuery(sql);
-  //       let sql2 = 'create unique index api_actionPath_apiVersion_method_uindex on api (actionPath, apiVersion, method)'
-  //       await sails.sendNativeQuery(sql2);
-  //     } catch (error) {
-  //       console.log(String(error));
-  //     }
-  //     await initDatabase();
-  //   } catch (error) {
-  //     console.log((error));
-  //   }
-  // }
+  if (process.env.NODE_ENV !== 'production' && sails.config.port == 1337 && sails.config.models.migrate == 'drop') {
+    try {
+      try {
+        let sql = 'create unique index auth_key_type_uindex on auth (`key`, type);'
+        await sails.sendNativeQuery(sql);
+        let sql2 = 'create unique index api_actionPath_apiVersion_method_uindex on api (actionPath, apiVersion, method)'
+        await sails.sendNativeQuery(sql2);
+      } catch (error) {
+        console.log(String(error));
+      }
+      await initDatabase();
+    } catch (error) {
+      console.log((error));
+    }
+  }
   
   await cache.refreshCache();
   console.log(sails.config.globals.BASE_URL);

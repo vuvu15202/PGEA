@@ -14,7 +14,7 @@ module.exports = {
       after: { type: 'string', description: 'ID trạng thái sau của bản ghi' },
       description: { type: 'string', columnType: 'text' }
     },
-  
+    
   };
   
   
