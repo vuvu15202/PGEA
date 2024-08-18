@@ -1,0 +1,2 @@
+path/to/largefile filter=lfs diff=lfs merge=lfs -text
+correct/file/path filter=lfs diff=lfs merge=lfs -text

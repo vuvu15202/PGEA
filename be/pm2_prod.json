@@ -13,7 +13,7 @@
         "PORT": 21895,
         "BASE_URL": "https://backend.bombasticlearninghub.com",
         "MONGO_DB": "mongodb://acc:pass@localhost:27017/ongbantat_prod",
-        "MYSQL_DB": "mysql://khangpq:35I-wDjzF0FrzRKw@34.125.217.193:3306/deploy_database",
+        "MYSQL_DB": "mysql://acc:password@localhost:3306/dbname",
         "REDIS_HOST": "localhost",
         "REDIS_PASS": "password",
         "REDIS_PORT": 6379,

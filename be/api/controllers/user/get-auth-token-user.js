@@ -2,8 +2,7 @@ const _ = require("@sailshq/lodash");
 module.exports = {
   friendlyName: "get auth token user",
 
-  description:
-    "Hiện danh sách token hiện tại của user",
+  description: "Hiện danh sách token hiện tại của user",
 
   inputs: {
     limit: {
@@ -30,10 +29,9 @@ module.exports = {
   fn: async function (inputs, exits) {
     let req = this.req;
     let res = this.res;
-
-    let auth = req.auth;
-    let authLength = Object.keys(auth).length;
-    if (!authLength) {
+    let user = req.user;
+    let userLength = Object.keys(user).length;
+    if (!userLength) {
       return res.forbidden({
         message: sails.__("403"),
       });
@@ -44,11 +42,11 @@ module.exports = {
       inputs.sort = common.parseSort(inputs.sort);
       inputs.select = common.parseSelect(inputs.select);
       inputs.where.isDelete = false;
-      if (!inputs.where.auth) {
-        inputs.where.auth = auth.id;
-      } 
+      if (!inputs.where.user) {
+        inputs.where.user = user.id;
+      }
 
-      let data = await AuthUser.find({
+      let data = await AuthToken.find({
         where: inputs.where,
         select: inputs.select,
         limit: inputs.limit || 100,
@@ -56,7 +54,7 @@ module.exports = {
         sort: inputs.sort,
       });
       return res.ok({
-        data
+        data,
       });
     } catch (error) {
       return res.serverError(error);

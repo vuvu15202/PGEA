@@ -93,7 +93,7 @@
     "custom-tests": "mocha ./test/test.js",
     "g36test": "mocha ./test/test.mjs",
     "testvuvu": "mocha ./test/vuvu15202/checkper.mjs",
-    "testthanhdq":"mocha ./test/vuvu15202/FC-46.mjs"
+    "testthanhdq":"mocha ./test/vuvu15202/FC-38.mjs"
   },
   "main": "app.js",
   "repository": {

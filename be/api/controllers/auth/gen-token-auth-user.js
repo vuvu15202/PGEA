@@ -1,4 +1,3 @@
-
 const md5 = require("md5");
 
 module.exports = {
@@ -25,26 +24,22 @@ module.exports = {
       let randomIndex = Math.floor(Math.random() * characters.length);
       randomString += characters.charAt(randomIndex);
     }
-    
+
     try {
-      let auth = req.auth;
-      if (auth) {
+      let user = req.user;
+      if (user) {
         let tokenAuth = {
-          key: auth.key,
-          auth: auth.id,
-          expiredAt: moment().add(inputs.expiredAt, "minutes").valueOf(),
-          token:"basic " + md5(auth.key + moment().valueOf() + randomString),
+          user: user.id,
+          token: "basic " + md5(user.name + moment().valueOf() + randomString),
         };
-        await AuthUser.create(tokenAuth).fetch();
-         return res.ok({
-           tokenAuth: tokenAuth,
-           message: tokenAuth.token,
-         });
+        await AuthToken.create(tokenAuth).fetch();
+        return res.ok({
+          tokenAuth: tokenAuth,
+          message: tokenAuth.token,
+        });
       }
     } catch (error) {
       return res.serverError(error);
     }
   },
-
-  
 };

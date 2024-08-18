@@ -94,9 +94,11 @@ module.exports = async function (req, res, next) {
                 }
                 if(Object.keys(where).length){
                     req.query.where = JSON.stringify(where);
+                }else{
+                    req.query.where = JSON.stringify({isDelete: false});
                 }
                 if(!req.query.sort){
-                    req.query.sort = JSON.stringify([{createAt: "DESC"}]);
+                    req.query.sort = JSON.stringify([{createdAt: "DESC"}]);
                 }
             }
             return next();
@@ -143,6 +145,8 @@ module.exports = async function (req, res, next) {
     
                     if(Object.keys(where).length){
                         req.query.where = JSON.stringify(where);
+                    }else{
+                        req.query.where = JSON.stringify({isDelete: false});
                     }
                     if(!req.query.sort){
                         req.query.sort = JSON.stringify([{createdAt: "DESC"}]);
@@ -158,21 +162,20 @@ module.exports = async function (req, res, next) {
                         req.body[api.userIdField] = req.user.id;
                     }
 
-                    if(api.fieldAllowValue && typeof api.fieldAllowValue === 'object' && Object.keys(api.fieldAllowValue).length > 0){
+                    if(api.fieldAllowValue && typeof api.fieldAllowValue === 'object' && Object.keys(api.fieldAllowValue).length){
                         for(let key in api.fieldAllowValue){
                             const e = api.fieldAllowValue[key];
                             if(req.body[key] !== undefined && e.length){
                                 const value = req.body[key];
-                                if(Array.isArray(value) && !_.intersectionWith(value, e).length === e.length){
-                                    return res.forbidden({
-                                        message: sails.__('403'),
-                                        error: 'PERMISSION_DENIED'
+                                if(Array.isArray(value) && !(_.intersectionWith(value, e).length == value.length)){
+                                    return res.badrequest({
+                                        message: sails.__('400'),
+                                        error: 'Giá trị trường "' + key + '" không hợp lệ!'
                                     });
-                                }
-                                if(!e.includes(value)){
-                                    return res.forbidden({
-                                        message: sails.__('403'),
-                                        error: 'PERMISSION_DENIED'
+                                }else if(!Array.isArray(value) && !e.includes(value)){
+                                    return res.badrequest({
+                                        message: sails.__('400'),
+                                        error: 'Giá trị trường "' + key + '" không hợp lệ!'
                                     });
                                 }
                             }
@@ -203,21 +206,20 @@ module.exports = async function (req, res, next) {
                         }
                     }
 
-                    if(api.fieldAllowValue && typeof fieldAllowValue === 'object' && Object.keys.length > 0){
+                    if(api.fieldAllowValue && typeof api.fieldAllowValue === 'object' && Object.keys(api.fieldAllowValue).length){
                         for(let key in api.fieldAllowValue){
                             const e = api.fieldAllowValue[key];
                             if(req.body[key] !== undefined && e.length){
                                 const value = req.body[key];
-                                if(Array.isArray(value) && !_.intersectionWith(value, e).length === e.length){
-                                    return res.forbidden({
-                                        message: sails.__('403'),
-                                        error: 'PERMISSION_DENIED'
+                                if(Array.isArray(value) && !(_.intersectionWith(value, e).length == value.length)){
+                                    return res.badrequest({
+                                        message: sails.__('400'),
+                                        error: 'Giá trị trường "' + key + '" không hợp lệ!'
                                     });
-                                }
-                                if(!e.includes(value)){
-                                    return res.forbidden({
-                                        message: sails.__('403'),
-                                        error: 'PERMISSION_DENIED'
+                                }else if(!Array.isArray(value) && !e.includes(value)){
+                                    return res.badrequest({
+                                        message: sails.__('400'),
+                                        error: 'Giá trị trường "' + key + '" không hợp lệ!'
                                     });
                                 }
                             }

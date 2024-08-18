@@ -5,7 +5,7 @@ module.exports = async function (req, res, next) {
 
   let token = req.headers.authorization;
   let current = moment().valueOf();
-  let authToken = await AuthUser.findOne({
+  let authToken = await AuthToken.findOne({
     token: token,
     isDelete: false,
     expiredAt: { ">": current },
