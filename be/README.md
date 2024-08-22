@@ -10,7 +10,7 @@
 ## 🚀 Features
 
 - 🛠️ **Dynamic Page Generation**: Easily create and customize admin pages without repetitive coding.
-- 🔒 **Role-Based Access Control**: Manage user permissions and access levels effectively.
+- 🔒 **Dynamic Authorization**: Developers can create any set of roles and permissions to assign to users, instead of hard authorizing at the backend like most current systems do. In addition, developers can authorize the management page to limit the type of people who can access the page or limit the use of certain functions.
 - 💾 **MySQL Integration**: Robust data handling with MySQL for efficient storage and retrieval.
 - 📦 **Extensible and Modular**: Designed for easy integration and extension to fit different use cases.
 
