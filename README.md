@@ -8,6 +8,7 @@ The Page Generator Engine (PGEA) helps developers quickly set up and manage admi
 
 ### Key Features 🌟:
 - **Dynamic Page Generation**: Create and manage pages based on your needs with ease.
+- **Dynamic Authorization**: Developers can create any set of roles and permissions to assign to users, instead of hard authorizing at the backend like most current systems do. In addition, developers can authorize the management page to limit the type of people who can access the page or limit the use of certain functions.
 - **Customizable Templates**: Use pre-built templates or design your own.
 - **User Management**: Integrate with user management systems for role and permission handling.
 - **Data Integration**: Connect seamlessly with databases and data sources.
