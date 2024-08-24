@@ -54,7 +54,11 @@ Before you begin, ensure you have the following installed:
 
 4. **Run the Application**:
     ```bash
-    npm run dev
+    sails lift
+    ```
+    or
+    ```bash
+    sails lift --drop
     ```
 
 Your application should now be running on `http://localhost:1337`.
