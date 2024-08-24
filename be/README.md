@@ -2,6 +2,8 @@
 # 🌟 Page Generator Engine for Administration Website - Backend  🌟
 
 ## 📝 Overview
+[![Framework: Sails.js](https://img.shields.io/badge/Framework-Sails.js-blue.svg?style=for-the-badge&logo=sails.js)](https://sailsjs.com/)
+[![Node.js: 18.17.0](https://img.shields.io/badge/Node.js-18.17.0-green.svg?style=for-the-badge&logo=node.js)](https://nodejs.org/)
 
 ## 🚀 Features
 
