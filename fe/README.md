@@ -1,23 +1,24 @@
+# 🌟 Page Generator Engine for Administration Website - Frontend 🌟
 
-# 🌟 Page Generator Engine for Administration Website 🌟
-
+[![Framework: Next.js](https://img.shields.io/badge/Framework-Next.js-blue.svg?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![Node.js: 18.17.0](https://img.shields.io/badge/Node.js-18.17.0-green.svg?style=for-the-badge&logo=node.js)](https://nodejs.org/)
 
 ## 📝 Overview
 
+**Page Generator Engine for Administration Website - Frontend** is part of an open-source project aimed at streamlining the creation and management of administrative pages. Built with **[Next.js](https://nextjs.org/)**, this frontend component provides a modern and efficient interface for interacting with the backend. It is designed to be flexible and customizable, fitting seamlessly into the overall architecture.
+
 ## 🚀 Features
 
-- 🛠️ **Dynamic Page Generation**: Easily create and customize admin pages without repetitive coding.
-- 🔒 **Role-Based Access Control**: Manage user permissions and access levels effectively.
-- 💾 **MySQL Integration**: Robust data handling with MySQL for efficient storage and retrieval.
-- 📦 **Extensible and Modular**: Designed for easy integration and extension to fit different use cases.
+- 🌐 **[Next.js](https://nextjs.org/) Integration**: A powerful and efficient frontend framework for server-side rendering and static site generation.
+- 🔐 **JWT Authentication**: Secure your application with configurable JWT tokens.
+- 🔄 **API Integration**: Easily connect to the backend API for seamless data handling.
 
 ## 📋 Prerequisites
 
 Before you begin, ensure you have the following installed:
 
-- 🟢 **Node.js** (>= 14.x)
-- 🔵 **npm** (Node Package Manager)
-- 🟢 **MySQL** (>= 8.x)
+- 🟢 **[Node.js](https://nodejs.org/)** (18.17.0 or higher)
+- 🔵 **[npm](https://www.npmjs.com/)** (Node Package Manager)
 
 ## ⚙️ Installation
 
@@ -33,32 +34,16 @@ Before you begin, ensure you have the following installed:
     npm install
     ```
 
-3. **Configure MySQL Database**:
+3. **Configure Environment Variables**:
 
-   - **Set Up MySQL Native Password**:
-   
-     Run the following SQL scripts one by one in your MySQL command line or MySQL Workbench to set up the native password and grant all privileges:
-   
-    ```sql
-    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your_password';
-    GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;
-    FLUSH PRIVILEGES;
-    ```
+   Update the `.env` file with your desired configurations:
+   ```bash
+   NEXT_PUBLIC_JWT_EXPIRATION=5m
+   NEXT_PUBLIC_JWT_SECRET=dd5f3089-40c3-403d-af14-d0c228b05cb4
+   NEXT_PUBLIC_JWT_REFRESH_TOKEN_SECRET=7c4c1c50-3230-45bf-9eae-c9b2e401c767
+   NEXT_PUBLIC_API_URL=http://localhost:1337  # Update this URL to point to your backend deployment
 
-   - **Create a MySQL database**:
-   
-     After setting up the password, create a database for the project.
-   
-   - **Update Configuration**:
-   
-     Update the `config/datastores.js` file in the project with your database credentials.
-
-4. **Run the Application**:
-    ```bash
-    npm run dev
-    ```
-
-Your application should now be running on `http://localhost:1337`.
+Your application should now be running on `http://localhost:5000`.
 
 ## 🛠️ Usage
 
@@ -79,5 +64,6 @@ If you have any questions or need assistance, feel free to open an issue on GitH
 
 ## 🙏 Acknowledgements
 
-- **Sails.js** - The powerful MVC framework for Node.js
-- **MySQL** - The world's most popular open-source database
+- **Next.js** - The powerful React framework for production.
+- **Node.js** - The JavaScript runtime built on Chrome's V8 JavaScript engine.
+
