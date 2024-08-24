@@ -6,12 +6,13 @@ Welcome to the **Page Generator Engine for Administration Website (PGEA)**! This
 
 The Page Generator Engine (PGEA) helps developers quickly set up and manage administrative interfaces. Whether you're building complex dashboards or simple admin pages, PGEA provides a robust framework for efficient management.
 
-### Key Features 🌟:
-- **Dynamic Page Generation**: Create and manage pages based on your needs with ease.
-- **Dynamic Authorization**: Developers can create any set of roles and permissions to assign to users, instead of hard authorizing at the backend like most current systems do. In addition, developers can authorize the management page to limit the type of people who can access the page or limit the use of certain functions.
-- **Customizable Templates**: Use pre-built templates or design your own.
-- **User Management**: Integrate with user management systems for role and permission handling.
-- **Data Integration**: Connect seamlessly with databases and data sources.
+## 🌈 Key Features
+
+- 🛠️ **Dynamic Page Generation**: Effortlessly create and manage admin pages on the fly, tailored to your specific needs.
+- 🔐 **Dynamic Authorization**: Create custom roles and permissions for users, ensuring secure and controlled access to different parts of the application.
+- 💾 **Database Integration**: The backend leverages **[MySQL](https://www.mysql.com/)** for reliable and efficient data management.
+- 🔄 **API Integration**: Seamlessly connect the frontend and backend, enabling smooth data handling and synchronization.
+- 📦 **Extensible and Modular**: Both the frontend and backend are designed to be easily customizable and extendable to suit various use cases.
 
 ## Documentation 📖
 
