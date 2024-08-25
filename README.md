@@ -28,7 +28,6 @@ This project is built using the following technologies:
 ## 📖 Documentation
 
 For comprehensive instructions and guides on using PGEA, check out our <a href="https://quanglinhtas-organization.gitbook.io/pgea-user-guide" target="_blank">GitBook User Guide</a>.
-<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">/a>
 ## 🚀 Getting Started
 
 To start using PGEA, follow these steps:
