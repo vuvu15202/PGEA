@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/a9d4f768-150d-4355-8617-26f542cf00af)# Page Generator Engine for Administration Website 🚀
+# Page Generator Engine for Administration Website 🚀
 
 Welcome to the **Page Generator Engine for Administration Website (PGEA)**! This open-source project simplifies the creation and management of administrative pages with a powerful and flexible page generation engine.
 
