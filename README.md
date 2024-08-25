@@ -55,9 +55,9 @@ Meet the amazing people who created this project:
       <a href="https://github.com/username1">Nguyen Thanh An</a>
     </td>
     <td align="center">
-      <img src="https://avatars.githubusercontent.com/u/3456789?v=4" width="100px;" alt="Contributor 2"/>
+      <img src="https://avatars.githubusercontent.com/u/122085456?v=4" width="100px;" alt="Contributor 2"/>
       <br />
-      <a href="https://github.com/username2">Kim Thi Hong Quyen</a>
+      <a href="[https://github.com/username2](https://github.com/quinne2002)">Kim Thi Hong Quyen</a>
     </td>
   </tr>
   <tr>
@@ -67,14 +67,14 @@ Meet the amazing people who created this project:
       <a href="[https://github.com/username3](https://github.com/L1N6)">Ta Quang Linh</a>
     </td>
     <td align="center">
-      <img src="https://avatars.githubusercontent.com/u/5678901?v=4" width="100px;" alt="Contributor 4"/>
+      <img src="https://avatars.githubusercontent.com/u/122299627?v=4" width="100px;" alt="Contributor 4"/>
       <br />
-      <a href="https://github.com/username4">Vu Truong Vu</a>
+      <a href="https://github.com/vuvu15202">Vu Truong Vu</a>
     </td>
     <td align="center">
-      <img src="https://avatars.githubusercontent.com/u/6789012?v=4" width="100px;" alt="Contributor 5"/>
+      <img src="https://avatars.githubusercontent.com/u/129383408?v=4" width="100px;" alt="Contributor 5"/>
       <br />
-      <a href="https://github.com/username5">Do Quoc Thanh</a>
+      <a href="https://github.com/DoQuocThanh">Do Quoc Thanh</a>
     </td>
   </tr>
 </table>
