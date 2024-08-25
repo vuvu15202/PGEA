@@ -24,6 +24,7 @@ This project is built using the following technologies:
 - **[MySQL](https://www.mysql.com/)**: A reliable and efficient relational database management system.
 - **[Redis](https://redis.io/)**: An in-memory data structure store used for caching and message brokering.
 
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) ![Sails.js](https://img.shields.io/badge/-Sails.js-0b334d?style=for-the-badge&logo=sails.js&logoColor=white) ![Next.js](https://img.shields.io/badge/-Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white) ![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white) ![Redis](https://img.shields.io/badge/-Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
 ## 📖 Documentation
 
 For comprehensive instructions and guides on using PGEA, check out our [GitBook User Guide](https://quanglinhtas-organization.gitbook.io/pgea-user-guide).
