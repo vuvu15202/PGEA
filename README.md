@@ -47,7 +47,7 @@ Meet the amazing people who created this project:
     <td align="center">
       <img src="https://avatars.githubusercontent.com/u/20201841?v=4" width="100px;" alt="KhangPQ"/>
       <br />
-      <a href="[https://github.com/vuvu15202](https://github.com/khangpqvn)">Pham Quang Khang</a>
+      <a href="https://github.com/khangpqvn">Pham Quang Khang</a>
     </td>
     <td align="center">
       <img src="https://avatars.githubusercontent.com/u/2345678?v=4" width="100px;" alt="Contributor 1"/>
@@ -57,14 +57,14 @@ Meet the amazing people who created this project:
     <td align="center">
       <img src="https://avatars.githubusercontent.com/u/122085456?v=4" width="100px;" alt="Contributor 2"/>
       <br />
-      <a href="[https://github.com/username2](https://github.com/quinne2002)">Kim Thi Hong Quyen</a>
+      <a href="https://github.com/quinne2002">Kim Thi Hong Quyen</a>
     </td>
   </tr>
   <tr>
     <td align="center">
       <img src="https://avatars.githubusercontent.com/u/119463897?s=400&u=7400bf30a461f4a368bdc39bfc6d18d43c340704&v=4" width="100px;" alt="LinhTQ"/>
       <br />
-      <a href="[https://github.com/username3](https://github.com/L1N6)">Ta Quang Linh</a>
+      <a href="https://github.com/L1N6">Ta Quang Linh</a>
     </td>
     <td align="center">
       <img src="https://avatars.githubusercontent.com/u/122299627?v=4" width="100px;" alt="Contributor 4"/>
