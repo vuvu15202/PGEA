@@ -49,9 +49,9 @@ Meet the amazing people who created this project:
       <a href="https://github.com/khangpqvn">Pham Quang Khang</a>
     </td>
     <td align="center">
-      <img src="https://avatars.githubusercontent.com/u/2345678?v=4" width="100px;" alt="Contributor 1"/>
+      <img src="https://avatars.githubusercontent.com/u/116077810?v=4" width="100px;" alt="Contributor 1"/>
       <br />
-      <a href="https://github.com/username1">Nguyen Thanh An</a>
+      <a href="https://github.com/nguyenan8888">Nguyen Thanh An</a>
     </td>
     <td align="center">
       <img src="https://avatars.githubusercontent.com/u/122085456?v=4" width="100px;" alt="Contributor 2"/>
