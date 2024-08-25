@@ -18,11 +18,11 @@ The Page Generator Engine (PGEA) helps developers quickly set up and manage admi
 
 This project is built using the following technologies:
 
-- **<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer">JavaScript</a>**: The primary programming language used throughout the project.
-- **<a href="https://sailsjs.com/" target="_blank" rel="noopener noreferrer">Sails.js</a>**: A powerful MVC framework for building backend services.
-- **<a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer">Next.js</a>**: A React framework used for the frontend, providing server-side rendering and static site generation.
-- **<a href="https://www.mysql.com/" target="_blank" rel="noopener noreferrer">MySQL</a>**: A reliable and efficient relational database management system.
-- **<a href="https://redis.io/" target="_blank" rel="noopener noreferrer">Redis</a>**: An in-memory data structure store used for caching and message brokering.
+- **<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">JavaScript</a>**: The primary programming language used throughout the project.
+- **<a href="https://sailsjs.com/" target="_blank">Sails.js</a>**: A powerful MVC framework for building backend services.
+- **<a href="https://nextjs.org/" target="_blank">Next.js</a>**: A React framework used for the frontend, providing server-side rendering and static site generation.
+- **<a href="https://www.mysql.com/" target="_blank">MySQL</a>**: A reliable and efficient relational database management system.
+- **<a href="https://redis.io/" target="_blank">Redis</a>**: An in-memory data structure store used for caching and message brokering.
 
 ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) ![Sails.js](https://img.shields.io/badge/-Sails.js-0b334d?style=for-the-badge&logo=sails.js&logoColor=white) ![Next.js](https://img.shields.io/badge/-Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white) ![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white) ![Redis](https://img.shields.io/badge/-Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
 ## 📖 Documentation
