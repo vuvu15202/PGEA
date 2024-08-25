@@ -54,7 +54,14 @@ Before you begin, ensure you have the following installed:
    
      Update the `config/datastores.js` file in the project with your database credentials.
 
-4. **Run the Application**:
+4. **Configure Redis**:
+
+- How to set Redis password for database: Click![here](https://www.youtube.com/watch?v=A75l24G26NE).
+- **Update Configuration**:
+   
+     Update the `config/datastores.js` file in the project with your Redis password credentials.
+
+5. **Run the Application**:
     ```bash
     sails lift
     ```
