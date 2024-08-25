@@ -1,26 +1,88 @@
-# bee
 
-a [Sails v1](https://sailsjs.com) application
+# 🌟 Page Generator Engine for Administration Website - Backend  🌟
 
+## 📝 Overview
+[![Framework: Sails.js](https://img.shields.io/badge/Framework-Sails.js-blue.svg?style=for-the-badge&logo=sails.js)](https://sailsjs.com/)
+[![Node.js: 18.17.0](https://img.shields.io/badge/Node.js-18.17.0-green.svg?style=for-the-badge&logo=node.js)](https://nodejs.org/)
 
-### Links
+## 🚀 Features
 
-+ [Sails framework documentation](https://sailsjs.com/get-started)
-+ [Version notes / upgrading](https://sailsjs.com/documentation/upgrading)
-+ [Deployment tips](https://sailsjs.com/documentation/concepts/deployment)
-+ [Community support options](https://sailsjs.com/support)
-+ [Professional / enterprise options](https://sailsjs.com/enterprise)
+- 🛠️ **Dynamic Page Generation**: Easily create and customize admin pages without repetitive coding.
+- 🔒 **Dynamic Authorization**: Developers can create any set of roles and permissions to assign to users, instead of hard authorizing at the backend like most current systems do. In addition, developers can authorize the management page to limit the type of people who can access the page or limit the use of certain functions.
+- 💾 **MySQL Integration**: Robust data handling with MySQL for efficient storage and retrieval.
+- 📦 **Extensible and Modular**: Designed for easy integration and extension to fit different use cases.
 
+## 📋 Prerequisites
 
-### Version info
+Before you begin, ensure you have the following installed:
 
-This app was originally generated on Wed May 29 2024 15:56:00 GMT+0700 (Indochina Time) using Sails v1.5.10.
+- 🟢 **Node.js** (>= 14.x)
+- 🔵 **npm** (Node Package Manager)
+- 🟢 **MySQL** (>= 8.x)
 
-<!-- Internally, Sails used [`sails-generate@2.0.11`](https://github.com/balderdashy/sails-generate/tree/v2.0.11/lib/core-generators/new). -->
+## ⚙️ Installation
 
+1. **Clone the Repository**:
+    ```bash
+    git clone https://github.com/vuvu15202/PGEA.git
+    cd PGEA
+    cd be
+    ```
 
+2. **Install Dependencies**:
+    ```bash
+    npm install
+    ```
 
-<!--
-Note:  Generators are usually run using the globally-installed `sails` CLI (command-line interface).  This CLI version is _environment-specific_ rather than app-specific, thus over time, as a project's dependencies are upgraded or the project is worked on by different developers on different computers using different versions of Node.js, the Sails dependency in its package.json file may differ from the globally-installed Sails CLI release it was originally generated with.  (Be sure to always check out the relevant [upgrading guides](https://sailsjs.com/upgrading) before upgrading the version of Sails used by your app.  If you're stuck, [get help here](https://sailsjs.com/support).)
--->
+3. **Configure MySQL Database**:
 
+   - **Set Up MySQL Native Password**:
+   
+     Run the following SQL scripts one by one in your MySQL command line or MySQL Workbench to set up the native password and grant all privileges:
+   
+    ```sql
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your_password';
+    GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;
+    FLUSH PRIVILEGES;
+    ```
+
+   - **Create a MySQL database**:
+   
+     After setting up the password, create a database for the project.
+   
+   - **Update Configuration**:
+   
+     Update the `config/datastores.js` file in the project with your database credentials.
+
+4. **Run the Application**:
+    ```bash
+    sails lift
+    ```
+    or
+    ```bash
+    sails lift --drop
+    ```
+
+Your application should now be running on `http://localhost:1337`.
+
+## 🛠️ Usage
+
+- **Admin Panel**: Log in as an admin to manage users, pages, and content.
+- **API Endpoints**: Access various API endpoints for user management, page generation, and more.
+
+## 🤝 Contribution
+
+We welcome contributions from the community! To get started:
+
+1. 🍴 **Fork the Repository** on GitHub.
+2. 🌿 **Create a New Branch** for your feature or bugfix.
+3. 📝 **Submit a Pull Request** with a detailed description of your changes.
+
+## 🛡️ Support
+
+If you have any questions or need assistance, feel free to open an issue on GitHub.
+
+## 🙏 Acknowledgements
+
+- **Sails.js** - The powerful MVC framework for Node.js
+- **MySQL** - The world's most popular open-source database
