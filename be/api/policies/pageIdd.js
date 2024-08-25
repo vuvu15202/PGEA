@@ -30,7 +30,7 @@ module.exports = async function (req, res, next) {
     return res.notFound({
       code: 1,
       message: sails.__("Page not found!"),
-      error: "Page not found!",
+      error: sails.__("Page not found!"),
     });
   }
 
@@ -40,14 +40,13 @@ module.exports = async function (req, res, next) {
     return res.notFound({
       code: 1,
       message: sails.__("Page information not found!"),
-      error: "Page information not found!",
+      error: sails.__("Page information not found!"),
     });
   }
 
-  if (
-    !pageInfo.roles &&
-    !pageInfo.roles.length > 0 &&
-    !_.intersection(pageInfo.roles, req.user.roleId).length > 0
+  if (!(pageInfo.roles 
+    && pageInfo.roles.length > 0 
+    && _.intersection(pageInfo.roles, req.user.roleId).length > 0)
   ) {
     return res.unauthorized({
       code: 1,
@@ -60,7 +59,7 @@ module.exports = async function (req, res, next) {
     return res.notFound({
       code: 1,
       message: sails.__("Page not found!"),
-      error: "Page not found!",
+      error: sails.__("Page not found!"),
     });
   }
 
@@ -74,20 +73,18 @@ module.exports = async function (req, res, next) {
   if (!apiInfo) {
     return res.notFound({
       message: sails.__("API not found!"),
-      error: "API not found!",
+      error: sails.__("API not found!"),
     });
   }
   
   req.apiInfo = apiInfo;
-
-  if (
-    !apiInfo.roles &&
-    !pageInfo.roles.length &&
-    !_.intersection(req.user.roleId, apiInfo.roles) > 0
-  ) {
+console.log(_.intersection(req.user.roleId, apiInfo.roles).length);
+  if (!(apiInfo.roles 
+    && apiInfo.roles.length > 0 
+    && _.intersection(apiInfo.roles, req.user.roleId).length > 0)) {
     return res.unauthorized({
       message: sails.__("Insufficient permissions to access the API!"),
-      error: "Insufficient permissions to access the API",
+      error: sails.__("Insufficient permissions to access the API"),
     });
   }
 
@@ -280,7 +277,6 @@ module.exports = async function (req, res, next) {
       if (api.fixedQuery) {
         req.query = Object.assign(req.query, JSON.stringify(api.fixedQuery));
       }
-      console.log(req.query.where)
       return next();
     case "create":
       try {

@@ -69,11 +69,12 @@ module.exports.http = {
     setLanguageLocale: (function () {
       return (req, res, next) => {
         // set locale by req
-        if (constant.ALLOW_LANGUAGE.includes((req.headers['accept-language'] + '').toLowerCase())) {
-          sails.hooks.i18n.setLocale(req.headers[('accept-language' + '').toLowerCase()]);
-        } else {
-          sails.hooks.i18n.setLocale('vi');
-        }
+        // if (constant.ALLOW_LANGUAGE.includes((req.headers['accept-language'] + '').toLowerCase())) {
+        //   sails.hooks.i18n.setLocale(req.headers[('accept-language' + '').toLowerCase()]);
+        // } else {
+        //   sails.hooks.i18n.setLocale('vi');
+        // }
+        sails.hooks.i18n.setLocale('vi');
         return next();
       };
     })(),

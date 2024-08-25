@@ -63,16 +63,6 @@ module.exports = {
 
       let defaultUserType = Conf.getDataFromKey("DEFAULT_USERTYPE_ON_REGISTING") || 3;
       let roleId = [];
-      let emailDomain = inputs.email.toLowerCase().split("@")[1];
-      if (
-        ((Conf.getDataFromKey("FPT_EDU_MAIL_DOMAIN_LIST") || "") + "")
-          .toLowerCase()
-          .split(",")
-          .includes(emailDomain) &&
-        Conf.getDataFromKey("ADDITIONAL_FPT_EDU_ROLE")
-      ) {
-        roleId.push(Conf.getDataFromKey("ADDITIONAL_FPT_EDU_ROLE"));
-      }
       let { auth, user } = await sails
         .getDatastore()
         .transaction(async (db) => {
