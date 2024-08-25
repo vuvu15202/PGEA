@@ -14,14 +14,66 @@ The Page Generator Engine (PGEA) helps developers quickly set up and manage admi
 - 🔄 **API Integration**: Seamlessly connect the frontend and backend, enabling smooth data handling and synchronization.
 - 📦 **Extensible and Modular**: Both the frontend and backend are designed to be easily customizable and extendable to suit various use cases.
 
-## Documentation 📖
+## 🛠️ Tech Stack
+
+This project is built using the following technologies:
+
+- **[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)**: The primary programming language used throughout the project.
+- **[Sails.js](https://sailsjs.com/)**: A powerful MVC framework for building backend services.
+- **[Next.js](https://nextjs.org/)**: A React framework used for the frontend, providing server-side rendering and static site generation.
+- **[MySQL](https://www.mysql.com/)**: A reliable and efficient relational database management system.
+- **[Redis](https://redis.io/)**: An in-memory data structure store used for caching and message brokering.
+
+## 📖 Documentation
 
 For comprehensive instructions and guides on using PGEA, check out our [GitBook User Guide](https://quanglinhtas-organization.gitbook.io/pgea-user-guide).
 
-## Getting Started 🚀
+## 🚀 Getting Started
 
 To start using PGEA, follow these steps:
 
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/vuvu15202/PGEA.git
+   cd PGEA
+   
+## 👥 Contributors
+
+Meet the amazing people who created this project:
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/1234567?v=4" width="100px;" alt="Vu Vu"/>
+      <br />
+      <a href="https://github.com/vuvu15202">Vu Vu</a>
+    </td>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/2345678?v=4" width="100px;" alt="Contributor 1"/>
+      <br />
+      <a href="https://github.com/username1">Contributor 1</a>
+    </td>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/3456789?v=4" width="100px;" alt="Contributor 2"/>
+      <br />
+      <a href="https://github.com/username2">Contributor 2</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/4567890?v=4" width="100px;" alt="Contributor 3"/>
+      <br />
+      <a href="https://github.com/username3">Contributor 3</a>
+    </td>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/5678901?v=4" width="100px;" alt="Contributor 4"/>
+      <br />
+      <a href="https://github.com/username4">Contributor 4</a>
+    </td>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/6789012?v=4" width="100px;" alt="Contributor 5"/>
+      <br />
+      <a href="https://github.com/username5">Contributor 5</a>
+    </td>
+  </tr>
+</table>
