@@ -1,4 +1,4 @@
-# Page Generator Engine for Administration Website 🚀
+![image](https://github.com/user-attachments/assets/a9d4f768-150d-4355-8617-26f542cf00af)# Page Generator Engine for Administration Website 🚀
 
 Welcome to the **Page Generator Engine for Administration Website (PGEA)**! This open-source project simplifies the creation and management of administrative pages with a powerful and flexible page generation engine.
 
@@ -45,36 +45,36 @@ Meet the amazing people who created this project:
 <table>
   <tr>
     <td align="center">
-      <img src="https://avatars.githubusercontent.com/u/1234567?v=4" width="100px;" alt="Vu Vu"/>
+      <img src="https://avatars.githubusercontent.com/u/20201841?v=4" width="100px;" alt="KhangPQ"/>
       <br />
-      <a href="https://github.com/vuvu15202">Vu Vu</a>
+      <a href="[https://github.com/vuvu15202](https://github.com/khangpqvn)">Pham Quang Khang</a>
     </td>
     <td align="center">
       <img src="https://avatars.githubusercontent.com/u/2345678?v=4" width="100px;" alt="Contributor 1"/>
       <br />
-      <a href="https://github.com/username1">Contributor 1</a>
+      <a href="https://github.com/username1">Nguyen Thanh An</a>
     </td>
     <td align="center">
       <img src="https://avatars.githubusercontent.com/u/3456789?v=4" width="100px;" alt="Contributor 2"/>
       <br />
-      <a href="https://github.com/username2">Contributor 2</a>
+      <a href="https://github.com/username2">Kim Thi Hong Quyen</a>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="https://avatars.githubusercontent.com/u/4567890?v=4" width="100px;" alt="Contributor 3"/>
+      <img src="https://avatars.githubusercontent.com/u/119463897?s=400&u=7400bf30a461f4a368bdc39bfc6d18d43c340704&v=4" width="100px;" alt="LinhTQ"/>
       <br />
-      <a href="https://github.com/username3">Contributor 3</a>
+      <a href="[https://github.com/username3](https://github.com/L1N6)">Ta Quang Linh</a>
     </td>
     <td align="center">
       <img src="https://avatars.githubusercontent.com/u/5678901?v=4" width="100px;" alt="Contributor 4"/>
       <br />
-      <a href="https://github.com/username4">Contributor 4</a>
+      <a href="https://github.com/username4">Vu Truong Vu</a>
     </td>
     <td align="center">
       <img src="https://avatars.githubusercontent.com/u/6789012?v=4" width="100px;" alt="Contributor 5"/>
       <br />
-      <a href="https://github.com/username5">Contributor 5</a>
+      <a href="https://github.com/username5">Do Quoc Thanh</a>
     </td>
   </tr>
 </table>
