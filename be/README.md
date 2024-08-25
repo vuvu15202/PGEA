@@ -56,7 +56,7 @@ Before you begin, ensure you have the following installed:
 
 4. **Configure Redis**:
 
-- How to set Redis password for database: Click![here](https://www.youtube.com/watch?v=A75l24G26NE).
+- How to set Redis password for database: Click **<a href="https://www.youtube.com/watch?v=A75l24G26NE" target="_blank" rel="noopener noreferrer">here</a>**.
 - **Update Configuration**:
    
      Update the `config/datastores.js` file in the project with your Redis password credentials.
