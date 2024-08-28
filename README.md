@@ -1,93 +1,79 @@
-# PGEA
+# Page Generator Engine for Administration Website 🚀
 
+Welcome to the **Page Generator Engine for Administration Website (PGEA)**! This open-source project simplifies the creation and management of administrative pages with a powerful and flexible page generation engine.
 
+## Introduction 📚
 
-## Getting started
+The Page Generator Engine (PGEA) helps developers quickly set up and manage administrative interfaces. Whether you're building complex dashboards or simple admin pages, PGEA provides a robust framework for efficient management.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## 🌈 Key Features
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+- 🛠️ **Dynamic Page Generation**: Effortlessly create and manage admin pages on the fly, tailored to your specific needs.
+- 🔐 **Dynamic Authorization**: Create custom roles and permissions for users, ensuring secure and controlled access to different parts of the application.
+- 💾 **Database Integration**: The backend leverages **[MySQL](https://www.mysql.com/)** for reliable and efficient data management.
+- 🔄 **API Integration**: Seamlessly connect the frontend and backend, enabling smooth data handling and synchronization.
+- 📦 **Extensible and Modular**: Both the frontend and backend are designed to be easily customizable and extendable to suit various use cases.
 
-## Add your files
+## 🛠️ Tech Stack
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+This project is built using the following technologies:
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/fpt-cp/pgea.git
-git branch -M main
-git push -uf origin main
-```
+- **<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">JavaScript</a>**: The primary programming language used throughout the project.
+- **<a href="https://sailsjs.com/" target="_blank">Sails.js</a>**: A powerful MVC framework for building backend services.
+- **<a href="https://nextjs.org/" target="_blank">Next.js</a>**: A React framework used for the frontend, providing server-side rendering and static site generation.
+- **<a href="https://www.mysql.com/" target="_blank">MySQL</a>**: A reliable and efficient relational database management system.
+- **<a href="https://redis.io/" target="_blank">Redis</a>**: An in-memory data structure store used for caching and message brokering.
 
-## Integrate with your tools
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) ![Sails.js](https://img.shields.io/badge/-Sails.js-0b334d?style=for-the-badge&logo=sails.js&logoColor=white) ![Next.js](https://img.shields.io/badge/-Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white) ![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white) ![Redis](https://img.shields.io/badge/-Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
+## 📖 Documentation
 
-- [ ] [Set up project integrations](https://gitlab.com/fpt-cp/pgea/-/settings/integrations)
+For comprehensive instructions and guides on using PGEA, check out our <a href="https://quanglinhtas-organization.gitbook.io/pgea-user-guide" target="_blank">GitBook User Guide</a>.
+## 🚀 Getting Started
 
-## Collaborate with your team
+To start using PGEA, follow these steps:
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/vuvu15202/PGEA.git
+   cd PGEA
+   
+## 👥 Contributors
 
-## Test and Deploy
+Meet the amazing people who created this project:
 
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/20201841?v=4" width="100px;" alt="KhangPQ"/>
+      <br />
+      <a href="https://github.com/khangpqvn">Pham Quang Khang</a>
+    </td>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/116077810?v=4" width="100px;" alt="Contributor 1"/>
+      <br />
+      <a href="https://github.com/nguyenan8888">Nguyen Thanh An</a>
+    </td>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/122085456?v=4" width="100px;" alt="Contributor 2"/>
+      <br />
+      <a href="https://github.com/quinne2002">Kim Thi Hong Quyen</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/119463897?s=400&u=7400bf30a461f4a368bdc39bfc6d18d43c340704&v=4" width="100px;" alt="LinhTQ"/>
+      <br />
+      <a href="https://github.com/L1N6">Ta Quang Linh</a>
+    </td>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/122299627?v=4" width="100px;" alt="Contributor 4"/>
+      <br />
+      <a href="https://github.com/vuvu15202">Vu Truong Vu</a>
+    </td>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/129383408?v=4" width="100px;" alt="Contributor 5"/>
+      <br />
+      <a href="https://github.com/DoQuocThanh">Do Quoc Thanh</a>
+    </td>
+  </tr>
+</table>

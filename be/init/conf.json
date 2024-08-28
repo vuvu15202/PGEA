@@ -1,0 +1,63 @@
+[
+    {
+        "key": "BASE_URL",
+        "val": "http://127.0.0.1:1337",
+        "type": "2",
+        "desc": "CHARACTERS"
+    },
+    {
+        "key": "TTL_CAPTCHA",
+        "val": "15",
+        "type": "1",
+        "desc": "Thời gian sống của mã captcha theo phút"
+    },
+    {
+        "id": 4,
+        "key": "TTL_TOKEN",
+        "val": "120",
+        "type": "1",
+        "desc": "Thời gian sống của mã token đăng nhập theo phút"
+    },
+    {
+        "key": "EMAIL_ACCOUNT",
+        "val": " ",
+        "type": "2",
+        "desc": "Tài khoản email dùng cho việc gửi các mail thông báo"
+    },
+    {
+        "key": "EMAIL_PASSWORD",
+        "val": " ",
+        "type": "2",
+        "desc": "Password của email gửi thông báo"
+    },
+    {
+        "key": "EMAIL_HOST",
+        "val": " ",
+        "type": "2",
+        "desc": "Server email host"
+    },
+    {
+        "key": "EMAIL_PORT",
+        "val": " ",
+        "type": "2",
+        "desc": "Server email port"
+    },
+    {
+        "key": "EMAIL_FROM",
+        "val": " ",
+        "type": "2",
+        "desc": "Title sender"
+    },
+    {
+        "key": "DEFAULT_PASSWORD",
+        "val": "abc12345",
+        "type": "2",
+        "desc": "Mật khẩu mặc định khi reset mật khẩu"
+    },
+    {
+        "key": "ALLOW_FILE_EXTENSION",
+        "val": "xlsx,xls,jpg",
+        "type": "2",
+        "desc": "định dạng file hệ thống chấp nhận"
+    }
+]

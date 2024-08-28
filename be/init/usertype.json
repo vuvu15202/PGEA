@@ -1,0 +1,16 @@
+[{
+    "name": "sys_admin",
+    "description": "",
+    "ruleIgnoreRole": [],
+    "ruleOnlyViewCreatedBy": false,
+    "ruleViewUserType": [1, 2],
+    "defaultRole": [1]
+
+}, {
+    "name": "admin",
+    "description": "",
+    "ruleIgnoreRole": [1],
+    "ruleOnlyViewCreatedBy": false,
+    "ruleViewUserType": [2],
+    "defaultRole": [2]
+}]

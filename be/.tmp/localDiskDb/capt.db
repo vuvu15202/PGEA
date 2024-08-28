@@ -1,0 +1,31 @@
+<<<<<<< HEAD
+{"text":"1548","id":1,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720410146622,"updatedAt":1720410146622,"deletedAt":0,"expiredAt":1720411946625,"_id":1}
+{"text":"5399","id":2,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720410173667,"updatedAt":1720410173667,"deletedAt":0,"expiredAt":1720411973668,"_id":2}
+{"text":"5901","id":3,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720410190423,"updatedAt":1720410190423,"deletedAt":0,"expiredAt":1720411990423,"_id":3}
+{"text":"4422","id":4,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720410190597,"updatedAt":1720410190597,"deletedAt":0,"expiredAt":1720411990598,"_id":4}
+{"text":"4123","id":5,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720410204454,"updatedAt":1720410204454,"deletedAt":0,"expiredAt":1720412004454,"_id":5}
+{"text":"4155","id":6,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720410322686,"updatedAt":1720410322686,"deletedAt":0,"expiredAt":1720412122686,"_id":6}
+{"text":"6097","id":7,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720410326132,"updatedAt":1720410326132,"deletedAt":0,"expiredAt":1720412126133,"_id":7}
+{"text":"8140","id":8,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720410381649,"updatedAt":1720410381649,"deletedAt":0,"expiredAt":1720412181651,"_id":8}
+{"text":"6816","id":9,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720410395919,"updatedAt":1720410395919,"deletedAt":0,"expiredAt":1720412195920,"_id":9}
+{"text":"7571","id":10,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720410399108,"updatedAt":1720410399108,"deletedAt":0,"expiredAt":1720412199108,"_id":10}
+{"text":"2114","id":11,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720410494606,"updatedAt":1720410494606,"deletedAt":0,"expiredAt":1720412294608,"_id":11}
+{"text":"1664","id":12,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720410504069,"updatedAt":1720410504069,"deletedAt":0,"expiredAt":1720412304069,"_id":12}
+{"text":"2943","id":13,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720410637727,"updatedAt":1720410637727,"deletedAt":0,"expiredAt":1720412437730,"_id":13}
+{"text":"1171","id":14,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720410642383,"updatedAt":1720410642383,"deletedAt":0,"expiredAt":1720412442384,"_id":14}
+{"text":"5828","id":15,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720410768048,"updatedAt":1720410768048,"deletedAt":0,"expiredAt":1720412568050,"_id":15}
+{"text":"9735","id":16,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720410770063,"updatedAt":1720410770063,"deletedAt":0,"expiredAt":1720412570063,"_id":16}
+{"text":"9396","id":17,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720410784774,"updatedAt":1720410784774,"deletedAt":0,"expiredAt":1720412584775,"_id":17}
+{"text":"2223","id":18,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720410825752,"updatedAt":1720410825752,"deletedAt":0,"expiredAt":1720412625752,"_id":18}
+{"text":"0344","id":19,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720411225321,"updatedAt":1720411225321,"deletedAt":0,"expiredAt":1720413025322,"_id":19}
+{"text":"4388","id":20,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720411229190,"updatedAt":1720411229190,"deletedAt":0,"expiredAt":1720413029190,"_id":20}
+{"text":"7312","id":21,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720411354717,"updatedAt":1720411354717,"deletedAt":0,"expiredAt":1720413154717,"_id":21}
+{"text":"1813","id":22,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720411399226,"updatedAt":1720411399226,"deletedAt":0,"expiredAt":1720413199226,"_id":22}
+{"text":"7421","id":23,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720411454147,"updatedAt":1720411454147,"deletedAt":0,"expiredAt":1720413254147,"_id":23}
+{"text":"4742","id":24,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720411463002,"updatedAt":1720411463002,"deletedAt":0,"expiredAt":1720413263002,"_id":24}
+{"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
+{"text":"3068","id":25,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720871100464,"updatedAt":1720871100464,"deletedAt":0,"expiredAt":1720872900466,"_id":25}
+{"text":"4758","id":26,"isDelete":false,"createdBy":null,"deletedBy":null,"createdAt":1720871101308,"updatedAt":1720871101308,"deletedAt":0,"expiredAt":1720872901309,"_id":26}
+=======
+{"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
+>>>>>>> main
