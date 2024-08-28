@@ -36,8 +36,11 @@ export const pageApi = {
     let url = api.url
 
     const method = api.method?.toLowerCase()
-    let authorization = window.localStorage.getItem('session')
-    if (authorization) authorization = authorization.replaceAll('"', '')
+    let authorization = window.localStorage.getItem('confs')
+    if (authorization) {
+      const confs = JSON.parse(authorization);
+      authorization = confs.PUBLIC_USER_TOKEN;
+    }    
 
     switch (api.method) {
       case 'GET':

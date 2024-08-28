@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react'
-import { Button, Grid } from '@mui/material'
+import { Button, Dialog, DialogContent, Grid } from '@mui/material'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
@@ -9,10 +9,13 @@ import { pageApi } from 'src/@core/apis/page'
 import FormSchema from 'src/@core/schemas/FormSchema'
 import { checkHideExpression, getFieldReferValue, getPage, parseQueryData, replaceAll } from 'src/@core/utils/page'
 import { useAuth } from 'src/hooks/useAuth'
+import { usePopup } from 'src/hooks/usePopup'
 import List from 'src/pages/list'
+import { decode } from 'jsonwebtoken'
 
 const FormCtrl = props => {
   const { user, meta, setMeta } = useAuth()
+  const { setMessage } = usePopup()
   const router = useRouter()
   const { t } = useTranslation()
 
@@ -29,15 +32,17 @@ const FormCtrl = props => {
   const [CurrentModal, setCurrentModal] = useState(null)
 
   useEffect(() => {
-    if (meta?.pages?.length) {
+    if (meta?.pages?.length && router.query) {
       loadData()
     }
-  }, [meta?.pages?.length])
+  }, [meta?.pages?.length, router.query])
 
   const loadData = async params => {
     if (!params) params = props
 
-    let pageInfo = getPage(user, meta, params.query.page)
+    const userData = user || decode(meta.confs.PUBLIC_USER_TOKEN.replace('bearer ', '')).user
+
+    let pageInfo = getPage(userData, meta, params.query.page || router.query.page)
 
     if (!pageInfo) {
       setLoading(false)
@@ -46,6 +51,7 @@ const FormCtrl = props => {
       return
     }
 
+    if (error) setError(null)
     setPageInfo(pageInfo)
     setMode(params.query.mode)
 
@@ -169,7 +175,8 @@ const FormCtrl = props => {
               }
             } else {
               setLoading(false)
-              toast.success(response.message || 'Success')
+              setMessage(response.message || 'Success')
+              if (props.fetchData) props.fetchData()
             }
 
             if (btnInfo.backOnDone) {
@@ -384,10 +391,7 @@ const FormCtrl = props => {
                         key={index}
                         className={`mr-1 btn-white-space`}
                         outline={item.outline || false}
-
-                        // color={item.color}
                         onClick={() => {
-                          // this.onButtonClick(item)
                           console.log('click report')
                         }}
                       >

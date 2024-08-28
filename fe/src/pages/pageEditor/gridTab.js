@@ -13,6 +13,7 @@ import { CustomList } from './FormTab'
 import { Icon } from '@iconify/react'
 import GridEditor from 'src/@core/components/grid-editor'
 import { v4 } from 'uuid'
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 
 export const dataTypes = ['string', 'number', 'date', 'boolean']
 
@@ -21,7 +22,8 @@ export const displays = ['', 'image', 'progressbar']
 export const defaultGrid = {
   name: '',
   field: '',
-  hideExpression: '',
+
+  // hideExpression: '',
   roles: [],
   type: dataTypes[0],
   formatNumber: false,
@@ -38,7 +40,6 @@ export const defaultGrid = {
   reverseColor: false,
   filterable: false,
   filterRange: false,
-  stringID: false,
   bindButton: false
 }
 
@@ -98,6 +99,15 @@ const GridTab = ({ grid = [], apis = [], onChange, showSave, setShowSave }) => {
     }
   }
 
+  const handleOnDragEnd = result => {
+    const { source, destination } = result; //source: VT hien tai, des: vi tri keo den
+    if (!destination) return;
+    const reorderedList = Array.from(listGrid);
+    const [movedItem] = reorderedList.splice(source.index, 1);//tao mang chua item bi keo
+    reorderedList.splice(destination.index, 0, movedItem);//them mang bi keo vao danh sach ko loai bo item nao ca
+    setListGrid(reorderedList);
+  };
+
   return (
     <Grid container spacing={4}>
       <Grid item xs={2} style={{ paddingLeft: 0 }}>
@@ -110,25 +120,43 @@ const GridTab = ({ grid = [], apis = [], onChange, showSave, setShowSave }) => {
               </IconButton>
             </ListItemSecondaryAction>
           </ListItem>
-          {listGrid.map((grid, index) => (
-            <ListItem disablePadding key={grid.id}>
-              <ListItemButton selected={selectedTab === grid.id} onClick={e => handleSelectGrid(grid.id)}>
-                <ListItemText primary={grid.name || `No Name ${index + 1}`} />
-                <ListItemSecondaryAction>
-                  <IconButton edge='end'>
-                    <Icon
-                      icon='tabler:trash'
-                      fontSize={20}
-                      onClick={e => {
-                        e.stopPropagation()
-                        handleRemoveGrid(grid.id)
-                      }}
-                    />
-                  </IconButton>
-                </ListItemSecondaryAction>
-              </ListItemButton>
-            </ListItem>
-          ))}
+          <DragDropContext onDragEnd={handleOnDragEnd}>
+            <Droppable droppableId="droppable">
+              {(provided) => (
+                <div ref={provided.innerRef} {...provided.droppableProps}>
+                  {listGrid.map((grid, index) => (
+                    <Draggable key={grid.id} draggableId={grid.id} index={index}>
+                      {(provided) => (
+                        <ListItem
+                          disablePadding
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                        >
+                          <ListItemButton selected={selectedTab === grid.id} onClick={() => handleSelectGrid(grid.id)}>
+                            <ListItemText primary={grid.name || `No Name ${index + 1}`} />
+                            <ListItemSecondaryAction>
+                              <IconButton edge='end'>
+                                <Icon
+                                  icon='tabler:trash'
+                                  fontSize={20}
+                                  onClick={e => {
+                                    e.stopPropagation();
+                                    handleRemoveGrid(grid.id);
+                                  }}
+                                />
+                              </IconButton>
+                            </ListItemSecondaryAction>
+                          </ListItemButton>
+                        </ListItem>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
         </CustomList>
       </Grid>
       <Grid item xs={10}>

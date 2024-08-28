@@ -54,9 +54,11 @@ const APIEditor = ({ api, onSave, showSave, setShowSave }) => {
       requestFields: api.requestFields || defaultApi.requestFields,
       restrictFields: api.restrictFields || defaultApi.restrictFields,
       responseFields: api.responseFields || defaultApi.responseFields,
-      fixedQuery: api.fixedQuery || defaultApi.fixedQuery,
+
+      // fixedQuery: api.fixedQuery || defaultApi.fixedQuery,
       boolExpression: api.boolExpression || defaultApi.boolExpression,
-      downloadReport: api.downloadReport || defaultApi.downloadReport,
+
+      // downloadReport: api.downloadReport || defaultApi.downloadReport,
       ignoreRoles: api.ignoreRoles || defaultApi.ignoreRoles
     },
     resolver: yupResolver(yupApi)
@@ -306,7 +308,10 @@ const APIEditor = ({ api, onSave, showSave, setShowSave }) => {
                           <Button
                             color='error'
                             variant='contained'
-                            onClick={() => field.onChange(field.value.filter(data => data.id !== value.id))}
+                            onClick={() => {
+                              field.onChange(field.value.filter(data => data.id !== value.id))
+                              setShowSave(true)
+                            }}
                           >
                             <Icon icon={'tabler:trash'}></Icon>
                           </Button>
@@ -426,7 +431,7 @@ const APIEditor = ({ api, onSave, showSave, setShowSave }) => {
             </Grid>
           </Grid>
         </ListItem>
-        <ListItem>
+        {/* <ListItem>
           <Grid container>
             <Grid item xs={4}>
               {t('common.fixedQuery')}
@@ -446,7 +451,7 @@ const APIEditor = ({ api, onSave, showSave, setShowSave }) => {
               />
             </Grid>
           </Grid>
-        </ListItem>
+        </ListItem> */}
         <ListItem>
           <Grid container>
             <Grid item xs={4}>
@@ -470,7 +475,7 @@ const APIEditor = ({ api, onSave, showSave, setShowSave }) => {
             </Grid>
           </Grid>
         </ListItem>
-        <ListItem>
+        {/* <ListItem>
           <Grid container>
             <Grid item xs={4}>
               {t('common.downloadReport')}
@@ -490,7 +495,7 @@ const APIEditor = ({ api, onSave, showSave, setShowSave }) => {
               />
             </Grid>
           </Grid>
-        </ListItem>
+        </ListItem> */}
       </form>
     </CustomList>
   )

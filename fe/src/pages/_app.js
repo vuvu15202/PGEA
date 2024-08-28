@@ -48,6 +48,7 @@ import 'src/iconify-bundle/icons-bundle-react'
 
 // ** Global css styles
 import '../../styles/globals.css'
+import { PopupProvider } from 'src/context/PopupContext'
 
 const clientSideEmotionCache = createEmotionCache()
 
@@ -108,14 +109,16 @@ const App = props => {
             {({ settings }) => {
               return (
                 <ThemeComponent settings={settings}>
-                  <Guard authGuard={authGuard} guestGuard={guestGuard}>
-                    <AclGuard aclAbilities={aclAbilities} guestGuard={guestGuard} authGuard={authGuard}>
-                      {getLayout(<Component {...pageProps} />)}
-                    </AclGuard>
-                  </Guard>
-                  <ReactHotToast>
-                    <Toaster position={settings.toastPosition} toastOptions={{ className: 'react-hot-toast' }} />
-                  </ReactHotToast>
+                  <PopupProvider>
+                    <Guard authGuard={authGuard} guestGuard={guestGuard}>
+                      <AclGuard aclAbilities={aclAbilities} guestGuard={guestGuard} authGuard={authGuard}>
+                        {getLayout(<Component {...pageProps} />)}
+                      </AclGuard>
+                    </Guard>
+                    <ReactHotToast style={{ zIndex: 9999 }}>
+                      <Toaster position={settings.toastPosition} toastOptions={{ className: 'react-hot-toast' }} />
+                    </ReactHotToast>
+                  </PopupProvider>
                 </ThemeComponent>
               )
             }}

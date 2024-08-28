@@ -162,7 +162,9 @@ const FormTab = ({ apis = [], schema = [], onChange, showSave, setShowSave }) =>
           {listSchema.map((schema, index) => (
             <ListItem disablePadding key={schema.id}>
               <ListItemButton selected={selectedTab === schema.id} onClick={e => handleSelectSchema(schema.id)}>
-                <ListItemText primary={schema.name || `No Name ${index + 1}`} />
+                <ListItemText
+                  primary={schema.name || `No Name ${index + 1}`}
+                />
                 <ListItemSecondaryAction>
                   <IconButton edge='end'>
                     <Icon

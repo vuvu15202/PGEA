@@ -153,7 +153,7 @@ const Base = props => {
             invalid={isInvalid() && !firstLoad}
             disabled={!!props.schema.disabled || false}
           />
-          {error()}
+          <span style={{ color: 'red' }}>{error()}</span>
         </Grid>
       </Grid>
     </FormGroup>

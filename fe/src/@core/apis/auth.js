@@ -9,6 +9,13 @@ export const authApi = {
       }
     })
   },
+  upload: payload => {
+    return axiosClient.post(`${API_URL}/api/file/upload-file`, payload, {
+      headers: {
+        'api-version': 'admin'
+      }
+    })
+  },
   getCapcha: () => {
     return axiosClient.get(`${API_URL}/api/auth/create-captcha`)
   },

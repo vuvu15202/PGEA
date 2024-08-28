@@ -64,7 +64,10 @@
     "update": "Update",
     "backToLogin": "Back to login",
     "column": "Cột",
-    "enableReadNumber": "Đọc số"
+    "enableReadNumber": "Đọc số",
+    "copyMessage": "Copy message",
+    "close": "Close",
+    "copyToClipboard": "Copy to clipboard"
   },
   "grid": {
     "name": "Tên",

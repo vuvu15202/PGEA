@@ -31,9 +31,11 @@ export const defaultApi = {
   requestFields: '',
   restrictFields: '',
   responseFields: '',
-  fixedQuery: '',
+
+  // fixedQuery: '',
   boolExpression: '',
-  downloadReport: '',
+
+  // downloadReport: '',
   ignoreRoles: []
 }
 

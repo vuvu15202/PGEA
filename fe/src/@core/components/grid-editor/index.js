@@ -40,7 +40,8 @@ const GridEditor = ({ grid, apis = [], onSave, showSave, setShowSave, onCopyGrid
       id: grid.id || v4(),
       name: grid.name || defaultGrid.name,
       field: grid.field || defaultGrid.field,
-      hideExpression: grid.hideExpression || defaultGrid.hideExpression,
+
+      // hideExpression: grid.hideExpression || defaultGrid.hideExpression,
       roles: grid.roles || defaultGrid.roles,
       type: grid.type || defaultGrid.type,
       formatNumber: grid.formatNumber || defaultGrid.formatNumber,
@@ -57,7 +58,8 @@ const GridEditor = ({ grid, apis = [], onSave, showSave, setShowSave, onCopyGrid
       reverseColor: grid.reverseColor || defaultGrid.reverseColor,
       filterable: grid.filterable || defaultGrid.filterable,
       filterRange: grid.filterRange || defaultGrid.filterRange,
-      stringID: grid.stringID || defaultGrid.stringID,
+
+      // stringID: grid.stringID || defaultGrid.stringID,
       bindButton: grid.bindButton || defaultGrid.bindButton
     },
     resolver: yupResolver(yupGrid)
@@ -87,7 +89,8 @@ const GridEditor = ({ grid, apis = [], onSave, showSave, setShowSave, onCopyGrid
       select,
       reverseColor,
       filterRange,
-      stringID,
+
+      // stringID,
       ...rest
     } = data
 
@@ -109,8 +112,6 @@ const GridEditor = ({ grid, apis = [], onSave, showSave, setShowSave, onCopyGrid
 
     if (data.filterable && data.type === 'string') {
       rest = { ...rest, filterRange }
-    } else {
-      rest = { ...rest, stringID }
     }
 
     return rest
@@ -186,7 +187,7 @@ const GridEditor = ({ grid, apis = [], onSave, showSave, setShowSave, onCopyGrid
             </Grid>
           </Grid>
         </ListItem>
-        <ListItem>
+        {/* <ListItem>
           <Grid container>
             <Grid item xs={4}>
               {t('grid.hideExpression')}
@@ -206,7 +207,7 @@ const GridEditor = ({ grid, apis = [], onSave, showSave, setShowSave, onCopyGrid
               />
             </Grid>
           </Grid>
-        </ListItem>
+        </ListItem> */}
         <ListItem>
           <Grid container>
             <Grid item xs={4}>
@@ -579,27 +580,29 @@ const GridEditor = ({ grid, apis = [], onSave, showSave, setShowSave, onCopyGrid
             </Grid>
           </ListItem>
         ) : (
-          <ListItem>
-            <Grid container>
-              <Grid item xs={4}>
-                {t('grid.stringID')}
-              </Grid>
-              <Grid item xs={8}>
-                <Controller
-                  name='stringID'
-                  control={control}
-                  render={({ field }) => (
-                    <Widgets.Checkbox
-                      fullWidth
-                      {...field}
-                      checked={field.value}
-                      onChange={e => onFieldChange(field.onChange, e)}
-                    />
-                  )}
-                />
-              </Grid>
-            </Grid>
-          </ListItem>
+
+          // <ListItem>
+          //   <Grid container>
+          //     <Grid item xs={4}>
+          //       {t('grid.stringID')}
+          //     </Grid>
+          //     <Grid item xs={8}>
+          //       <Controller
+          //         name='stringID'
+          //         control={control}
+          //         render={({ field }) => (
+          //           <Widgets.Checkbox
+          //             fullWidth
+          //             {...field}
+          //             checked={field.value}
+          //             onChange={e => onFieldChange(field.onChange, e)}
+          //           />
+          //         )}
+          //       />
+          //     </Grid>
+          //   </Grid>
+          // </ListItem>
+          <></>
         )}
 
         <ListItem>

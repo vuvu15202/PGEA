@@ -86,9 +86,9 @@ const SingleModel = props => {
   const [columns, setColumns] = useState([])
   const [tableData, setTableData] = useState(_.cloneDeep(state.data))
   const [pageInfo, setPageInfo] = useState(null)
+  const [hiddenWhere, setHiddenWhere] = useState([]);
 
   let schema = null
-  let hiddenWhere = []
   let hiddenWhereDepend = []
   let formData = {}
 
@@ -138,7 +138,7 @@ const SingleModel = props => {
     schema = props.schema
     fetchItemName(pageInfo, schema, props.value)
     formData = Object.assign({}, props.data || {})
-    hiddenWhere = props.schema.hiddenWhere || []
+    setHiddenWhere(props.schema.hiddenWhere || [])
     hiddenWhereDepend = []
     ;(props.schema.hiddenWhere || []).map(v => {
       let tmpV = ''
@@ -159,7 +159,7 @@ const SingleModel = props => {
   const toggle = mode => {
     setState(prevState => ({
       ...prevState,
-      mode,
+      ...(mode ? { mode } : {}),
       modal: !prevState.modal
     }))
   }
@@ -169,8 +169,8 @@ const SingleModel = props => {
   }
 
   const getFilterFromHiddenWhere = allowByPassHiddenWhere => {
-    let ret = {}
-    ;(hiddenWhere || []).map(v => {
+    let ret = {};
+    (hiddenWhere || []).map(v => {
       let tmpV = ''
       try {
         tmpV = JSON.parse(v.value)
@@ -325,7 +325,7 @@ const SingleModel = props => {
         fullWidth
         type='text'
         disabled={true}
-        value={state.display || `${state.value}` || ''}
+        value={state.display || state.value || ''}
         InputProps={{
           endAdornment: (
             <InputAdornment position='end'>
@@ -369,7 +369,6 @@ const SingleModel = props => {
               <Button
                 color='secondary'
                 onClick={() => {
-                  setState(prev => ({ ...prev, value, display }))
                   toggle()
                 }}
               >

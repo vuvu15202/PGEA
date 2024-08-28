@@ -8,8 +8,6 @@ const JSONWidget = props => {
     props.value ? (typeof props.value === 'object' ? props.value : JSON.stringify(props.value) || {}) : {}
   )
 
-  console.log('PLACEHOLDER: ', placeholder)
-
   return (
     <JSONInput
       theme={'dark_vscode_tribute'}

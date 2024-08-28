@@ -26,7 +26,8 @@ export const defaultButton = {
   column: '',
   hideExpression: '',
   action: BUTTON_ACTIONS.NONE,
-  reportName: '',
+
+  // reportName: '',
   modalQuery: '',
   url: '',
   target: URL_TARGETS._self,
@@ -35,7 +36,8 @@ export const defaultButton = {
   confirm: '',
   backOnDone: false,
   backOnDoneHref: '',
-  embedUrl: false,
+
+  // embedUrl: false,
   type: BUTTON_TYPES.BUTTON,
   showOnTop: false,
   showOnFormOnly: false
@@ -112,7 +114,14 @@ const ButtonTab = ({ buttons = [], apis = [], onChange, showSave, setShowSave })
           {listButton.map((button, index) => (
             <ListItem disablePadding key={button.id}>
               <ListItemButton selected={selectedTab === button.id} onClick={e => handleSelectButton(button.id)}>
-                <ListItemText primary={button.mode || `No Name ${index + 1}`} />
+                <ListItemText
+                  primary={
+                    <div>
+                      {button.title || `No Name ${index + 1}`}
+                      <div style={{ fontSize: '0.8rem' }}>{button.mode}</div>
+                    </div>
+                  }
+                />
                 <ListItemSecondaryAction>
                   <IconButton edge='end'>
                     <Icon

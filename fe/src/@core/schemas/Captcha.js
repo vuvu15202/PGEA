@@ -16,6 +16,10 @@ const Captcha = props => {
     loadCaptcha()
   }, [])
 
+  useEffect(() => {
+    if (props.submitted) loadCaptcha()
+  }, [props.submitted])
+
   const loadCaptcha = async () => {
     const { data } = await authApi.getCapcha()
 
@@ -26,7 +30,6 @@ const Captcha = props => {
     const value = e.target.value
 
     if (state.captchaId && value && props.onChange) {
-      console.log(`${state.captchaId}|${value}`);
 
       props.onChange(`${state.captchaId}|${value}`)
     }
@@ -37,27 +40,28 @@ const Captcha = props => {
   return (
     <div>
       <Box sx={{ mt: 4 }}>
-        <div
-          sx={{ height: '50px' }}
-          dangerouslySetInnerHTML={{
-            __html: state.captcha
-          }}
-        ></div>
-        <CustomTextField
-          fullWidth
-          label='Capcha'
-          onChange={onChange}
-          placeholder='xxxx'
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position='end'>
-                <IconButton edge='end' onClick={() => loadCaptcha()}>
-                  <Icon fontSize='1.25rem' icon={'tabler:refresh'} />
-                </IconButton>
-              </InputAdornment>
-            )
-          }}
-        />
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <div
+            sx={{ height: '50px' }}
+            dangerouslySetInnerHTML={{
+              __html: state.captcha
+            }}
+          ></div>
+          <CustomTextField
+            fullWidth
+            onChange={onChange}
+            placeholder='Captcha'
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position='end'>
+                  <IconButton edge='end' onClick={() => loadCaptcha()}>
+                    <Icon fontSize='1.25rem' icon={'tabler:refresh'} />
+                  </IconButton>
+                </InputAdornment>
+              )
+            }}
+          />
+        </Box>
       </Box>
     </div>
   )

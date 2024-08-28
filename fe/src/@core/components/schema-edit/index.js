@@ -85,7 +85,7 @@ const SchemaEdit = ({ schema, apis = [], onSave, showSave, setShowSave, onCopySc
 
   const removeUnuseData = data => {
     let {
-      arrayInput,
+      // arrayInput,
       numberOfLine,
       addButonName,
       min,
@@ -107,9 +107,9 @@ const SchemaEdit = ({ schema, apis = [], onSave, showSave, setShowSave, onCopySc
       ...rest
     } = data
 
-    if (data.widget === 'Text') {
-      rest = { ...rest, arrayInput }
-    }
+    // if (data.widget === 'Text') {
+    //   rest = { ...rest, arrayInput }
+    // }
 
     if (data.widget === 'TextArea' || data.widget === 'RichText') {
       rest = { ...rest, numberOfLine }
@@ -414,7 +414,7 @@ const SchemaEdit = ({ schema, apis = [], onSave, showSave, setShowSave, onCopySc
             </Grid>
           </Grid>
         </ListItem>
-        {watchWidget === 'Text' && (
+        {/* {watchWidget === 'Text' && (
           <ListItem>
             <Grid container>
               <Grid item xs={4}>
@@ -437,7 +437,7 @@ const SchemaEdit = ({ schema, apis = [], onSave, showSave, setShowSave, onCopySc
               </Grid>
             </Grid>
           </ListItem>
-        )}
+        )} */}
         {(watchWidget === 'TextArea' || watchWidget === 'RichText') && (
           <ListItem>
             <Grid container>

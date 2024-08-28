@@ -95,6 +95,8 @@ const AuthProvider = ({ children }) => {
     setUser(null)
     window.localStorage.removeItem(authConfig.userData)
     window.localStorage.removeItem(authConfig.storageTokenKeyName)
+    window.localStorage.removeItem(authConfig.feConfigs)
+    window.localStorage.removeItem(authConfig.auth)
     router.push('/login')
   }
 

@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
 export const getPage = (user, meta, id) => {
-  if (!meta) return
+  if (!meta) return 'no page'
 
   const { pages } = meta
 
@@ -35,6 +35,55 @@ export const getPage = (user, meta, id) => {
         let tmpSchema = []
         pages[i].schema.map(i => {
           if (!(i.roles && i.roles.length > 0 && _.intersection(i.roles, user.roleId).length === 0)) {
+            tmpSchema.push(i)
+          }
+
+          return
+        })
+        pages[i].schema = tmpSchema
+      }
+
+      return pages[i]
+    }
+  }
+}
+
+export const getPageSync = (userInfo, meta, id) => {
+  if (!meta) {
+    window.location.href = '/login'
+  }
+
+  let pages = meta.pages
+  for (var i = 0; i < pages.length; i++) {
+    if (pages[i].id == id) {
+      if (!Array.isArray(pages[i].buttons)) pages[i].buttons = []
+      if (pages[i].buttons) {
+        let tmpButtons = []
+        pages[i].buttons.map(i => {
+          if (!(i.roles && i.roles.length > 0 && _.intersection(i.roles, userInfo.roleId).length === 0)) {
+            tmpButtons.push(i)
+          }
+
+          return i
+        })
+        pages[i].buttons = tmpButtons
+      }
+      if (pages[i].grid) {
+        let tmpGrid = []
+        pages[i].grid.map(i => {
+          if (!(i.roles && i.roles.length > 0 && _.intersection(i.roles, userInfo.roleId).length === 0)) {
+            tmpGrid.push(i)
+          }
+
+          return
+        })
+        pages[i].grid = tmpGrid
+      }
+
+      if (pages[i].schema) {
+        let tmpSchema = []
+        pages[i].schema.map(i => {
+          if (!(i.roles && i.roles.length > 0 && _.intersection(i.roles, userInfo.roleId).length === 0)) {
             tmpSchema.push(i)
           }
 

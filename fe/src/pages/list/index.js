@@ -15,6 +15,7 @@ import {
   FormGroup,
   Grid,
   Input,
+  LinearProgress,
   Link,
   MenuItem,
   Switch,
@@ -40,6 +41,7 @@ import { timestampTpDDMMYYYY } from 'src/@core/utils/format'
 import Widgets from 'src/@core/schemas/Widgets'
 import { t } from 'i18next'
 import CustomTextField from 'src/@core/components/mui/text-field'
+import { DataGridPro } from '@mui/x-data-grid-pro'
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Fade ref={ref} {...props} />
@@ -314,7 +316,7 @@ const List = props => {
                 <Switch
                   color='primary'
                   defaultChecked={row.value}
-                  onChange={e => row.value && onSwitch(button, row?.row || row || {}, e.target.checked)}
+                  onChange={e => onSwitch(button, row?.row || row || {}, e.target.checked)}
                 />
               }
             />
@@ -400,9 +402,11 @@ const List = props => {
     }
   }
 
-  const createColumnsData = pageInfo => {
+  const createColumnsData = (pageInfo, arraySelect) => {
     if (!pageInfo) return
     let columns = []
+
+    pageInfo = removeDuplicate(pageInfo)
 
     for (let i = 0; i < pageInfo.grid.length; i++) {
       let gridInfo = pageInfo.grid[i]
@@ -413,7 +417,19 @@ const List = props => {
         field: gridInfo.field,
         filterable: !!gridInfo?.filterable,
         renderCell: row => {
-          return <span className={`text-${gridInfo.color}`}>{row.value}</span>
+          return (
+            <span
+              style={{
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                display: 'block',
+                ...(gridInfo.color ? { color: gridInfo.color } : {})
+              }}
+            >
+              {row.value}
+            </span>
+          )
         }
       }
       if (gridInfo.enumable) {
@@ -445,11 +461,25 @@ const List = props => {
               for (let i = 0; i < gridInfo.items.length; i++) {
                 if (gridInfo.type === 'boolean') {
                   if ((gridInfo.items[i].value === 1 && row.value) || (gridInfo.items[i].value === 0 && !row.value)) {
-                    return <span className={`text-${gridInfo.color}`}>{gridInfo.items[i].key}</span>
+                    return (
+                      <span
+                        style={{
+                          whiteSpace: 'nowrap',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          display: 'block',
+                          ...(gridInfo.color ? { color: gridInfo.color } : {})
+                        }}
+                      >
+                        {gridInfo.items[i].key}
+                      </span>
+                    )
                   }
                 } else {
                   if (gridInfo.items[i].value == row.value + '') {
-                    return <span className={`text-${gridInfo.color}`}>{gridInfo.items[i].key}</span>
+                    return (
+                      <span sx={{ ...(gridInfo.color ? { color: gridInfo.color } : {}) }}>{gridInfo.items[i].key}</span>
+                    )
                   }
                 }
               }
@@ -544,7 +574,15 @@ const List = props => {
             for (var i = 0; i < modelSelect[gridInfo.field].length; i++) {
               if (modelSelect[gridInfo.field][i].id == row.value) {
                 return (
-                  <span className={`text-${gridInfo.color}`}>
+                  <span
+                    style={{
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      display: 'block',
+                      ...(gridInfo.color ? { color: gridInfo.color } : {})
+                    }}
+                  >
                     {modelSelect[gridInfo.field][i][gridInfo.select || 'name']}
                   </span>
                 )
@@ -552,7 +590,7 @@ const List = props => {
             }
           }
 
-          return <span className={`text-${gridInfo.color}`}>{row.value}</span>
+          return <span style={{ ...(gridInfo.color ? { color: gridInfo.color } : {}) }}>{row.value}</span>
         }
       } else if (gridInfo.arraySelect) {
         let filt = {}
@@ -573,7 +611,11 @@ const List = props => {
                 <Widgets.SingleModel
                   value={''}
                   onChange={val => {
-                    console.log(val)
+                    const obj = { filtered: [{ id: gridInfo.field, value: val }] }
+
+                    setTimeout(() => {
+                      setTbl(prev => (typeof prev === 'object' ? { ...prev, ...obj } : obj))
+                    }, 1)
                   }}
                   data={filt}
                   schema={{
@@ -592,63 +634,79 @@ const List = props => {
 
         if (!arraySelect?.[gridInfo.field]) {
           item.renderCell = row => {
-            return <span className={`text-${gridInfo.color}`}>{row.value}</span>
+            return (
+              <span
+                style={{
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  display: 'block',
+                  ...(gridInfo.color ? { color: gridInfo.color } : {})
+                }}
+              >
+                {row.value}
+              </span>
+            )
           }
         } else {
           item.renderCell = row => {
             let value = ''
-            for (var i = 0; i < (arraySelect[gridInfo.field] || []).length; i++) {
-              let tmp =
-                gridInfo.type === 'string' ? '' + arraySelect[gridInfo.field][i].id : +arraySelect[gridInfo.field][i].id
+
+            const fields = arraySelect[gridInfo.field]?.data || []
+            for (let i = 0; i < fields.length; i++) {
+              let tmp = gridInfo.type === 'string' ? '' + fields[i].id : +fields[i].id
               if (row.value.includes(tmp)) {
                 if (value) {
                   value += ', '
                 }
-                value +=
-                  arraySelect[gridInfo.field][i][gridInfo.select || 'name'] ||
-                  `{id:${arraySelect[gridInfo.field][i].id}}`
+                value += fields[i][gridInfo.select || 'name'] || `{id:${fields[i].id}}`
               }
             }
 
-            return <span className={`text-${gridInfo.color}`}>{value}</span>
+            return (
+              <span
+                style={{
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  display: 'block',
+                  ...(gridInfo.color ? { color: gridInfo.color } : {})
+                }}
+              >
+                {value}
+              </span>
+            )
           }
         }
       } else {
         switch (gridInfo.type) {
           case 'date':
             if (gridInfo.filterRange) {
-              item.Filter = ({ filter, onChange }) => {
-                return (
-                  <div>Widget date</div>
-
-                  // <Row>
-                  //   <Col style={{ paddingRight: '0px' }}>
-                  //     <Widgets.Date
-                  //       value={filter ? filter.value[0] : null}
-                  //       schema={{ disabled: false, placeholder: 'Từ' }}
-                  //       onChange={val => {
-                  //         let arr = []
-                  //         if (filter && filter.value) arr = filter.value
-                  //         arr[0] = val
-                  //         onChange(arr)
-                  //       }}
-                  //     />
-                  //   </Col>
-                  //   <Col style={{ paddingLeft: '1px' }}>
-                  //     <Widgets.Date
-                  //       value={filter && filter.value ? filter.value[1] : null}
-                  //       schema={{ disabled: false, placeholder: 'Đến' }}
-                  //       onChange={val => {
-                  //         let arr = []
-                  //         if (filter && filter.value) arr = filter.value
-                  //         arr[1] = val
-                  //         onChange(arr)
-                  //       }}
-                  //     />
-                  //   </Col>
-                  // </Row>
-                )
-              }
+              // item.filterOperators = [
+              //   {
+              //     label: gridInfo.name,
+              //     value: gridInfo.field,
+              //     getApplyFilterFn: filterItem => {
+              //       console.log(filterItem)
+              //     },
+              //     InputComponentProps: { gridInfo, tbl },
+              //     InputComponent: ({ gridInfo, tbl }) => {
+              //       const filter = tbl?.filtered && tbl.filtered?.id === gridInfo.field ? tbl.filtered : null
+              //       return (
+              //         <Widgets.Date
+              //           value={filter ? filter?.value?.[0] : null}
+              //           onChange={vals => {
+              //             const obj = { filtered: [{ id: gridInfo.field, value: vals }] }
+              //             setTimeout(() => {
+              //               setTbl(prev => (typeof prev === 'object' ? { ...prev, ...obj } : obj))
+              //             }, 1)
+              //           }}
+              //           schema={{ disabled: false, placeholder: 'Từ' }}
+              //         />
+              //       )
+              //     }
+              //   }
+              // ]
             } else {
               item.Filter = ({ filter, onChange }) => {
                 return (
@@ -666,7 +724,15 @@ const List = props => {
             }
             item.renderCell = row => {
               return (
-                <span className={`text-${gridInfo.color}`}>
+                <span
+                  style={{
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    display: 'block',
+                    ...(gridInfo.color ? { color: gridInfo.color } : {})
+                  }}
+                >
                   {timestampTpDDMMYYYY(row.value)}
                   {/* <Moment format='DD/MM/YYYY HH:mm:ss'>{row.value}</Moment> */}
                 </span>
@@ -759,7 +825,7 @@ const List = props => {
                 value = value.toLocaleString()
               }
 
-              return <span className={`text-${gridInfo.color}`}>{value}</span>
+              return <span style={{ ...(gridInfo.color ? { color: gridInfo.color } : {}) }}>{value}</span>
             }
             break
           case 'string':
@@ -767,13 +833,9 @@ const List = props => {
               case 'image':
                 item.renderCell = row => {
                   if (_.isArray(row.value)) {
-                    return <div>Image singale</div>
-
-                    // <ImageViewer images={row.value} className='list-item-img' />
+                    return <img style={{ width: 80, height: 50, objectFit: 'contain' }} src={row.value} alt='image' />
                   } else {
-                    return <div>Image array</div>
-
-                    // <ImageViewer images={[row.value]} className='list-item-img' />
+                    return <img style={{ width: 80, height: 50, objectFit: 'contain' }} src={row.value} alt='image' />
                   }
                 }
                 break
@@ -788,7 +850,12 @@ const List = props => {
                   }
 
                   return (
-                    <div>Process component</div>
+                    <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <Box sx={{ width: '100%' }}>
+                        <LinearProgress color={'primary'} variant='determinate' value={row.value} />
+                      </Box>
+                      <Box sx={{ ml: 1 }}>{row.value}%</Box>
+                    </Box>
 
                     // <Progress animated color={PROGRESS_COLORS[colorIndex]} value={row.value}>
                     //   <span className={row.value === 0 ? `text-primary` : ''}>{row.value}%</span>
@@ -799,7 +866,15 @@ const List = props => {
               default:
                 item.renderCell = row => {
                   return (
-                    <span className={`text-${gridInfo.color}`}>
+                    <span
+                      style={{
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        display: 'block',
+                        ...(gridInfo.color ? { color: gridInfo.color } : {})
+                      }}
+                    >
                       {row.value && typeof row.value === 'object' ? JSON.stringify(row.value) : row.value}
                     </span>
                   )
@@ -826,14 +901,14 @@ const List = props => {
       })
 
       let col = {
-        flex: 0.1,
+        width: buttons.length * 125,
         headerName: 'Hành động',
         field: 'actions',
         sortable: false,
         filterable: false,
         renderCell: row => {
           return (
-            <div>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
               {buttons.map((item, index) => {
                 if (item.column) return null
 
@@ -845,24 +920,12 @@ const List = props => {
       }
       columns.push(col)
     }
-
     setColumns(columns)
   }
 
   const fetchData = useCallback(
     async (pageInfo, tbl_param) => {
       let rangeFilter = moment().valueOf() - lastFilterChange
-
-      // if (rangeFilter < DEFAULT_FILTER_WAITIME) {
-      //   if (this.filterSetTimeoutInstance) {
-      //     clearTimeout(this.filterSetTimeoutInstance);
-      //   }
-      //   this.filterSetTimeoutInstance = setTimeout(() => {
-      //     this.fetchData(tbl);
-      //   }, DEFAULT_FILTER_WAITIME - rangeFilter);
-
-      //   return;
-      // }
 
       const query = queryList
       let filter = {}
@@ -894,7 +957,7 @@ const List = props => {
         }
       }
 
-      let input = { queryInput: JSON.stringify(filter), limit, skip }
+      let input = { queryInput: JSON.stringify(filter), ...(limit >= 0 && skip >= 0 ? { limit, skip } : {}) }
       if (sort) {
         input.sort = JSON.stringify(sort)
       }
@@ -907,7 +970,7 @@ const List = props => {
 
       let modelSelect = {}
       let modelSelectIds = {}
-      let arraySelect = {}
+      let _arraySelect = {}
       let arraySelectIds = {}
 
       data.forEach(d => {
@@ -919,7 +982,6 @@ const List = props => {
           if (g.arraySelect) {
             if (!arraySelectIds[g.field]) arraySelectIds[g.field] = []
             if (d[g.field] && _.intersection(arraySelectIds[g.field], d[g.field]).length !== d[g.field].length) {
-              console.log(arraySelectIds[g.field])
               arraySelectIds[g.field] = arraySelectIds[g.field].concat(d[g.field])
             }
           }
@@ -944,22 +1006,35 @@ const List = props => {
           let rs = await pageApi.callPageApi(pageInfo, gInfo.modelSelectApi, {
             queryInput: JSON.stringify({ id: arraySelectIds[gInfo.field] })
           })
-          arraySelect[gInfo.field] = rs.data
+          _arraySelect[gInfo.field] = rs.data
         }
       }
 
-      setPageData(data)
-      setModelSelect(modelSelect)
-      setArraySelect(arraySelect)
-      setCount(count)
-      setLoading(false)
-      setNPage(nPage)
-      setCurrentFilter(input)
-
-      createColumnsData(pageInfo)
+      setPageData(() => data)
+      setModelSelect(() => modelSelect)
+      setArraySelect(() => _arraySelect)
+      setCount(() => count)
+      setNPage(() => nPage)
+      setCurrentFilter(() => input)
+      createColumnsData(pageInfo, _arraySelect)
+      setLoading(() => false)
     },
     [calculateFilter, lastFilterChange, limitSize, nPage, queryList, tbl]
   )
+
+  const removeDuplicate = pageInfo => {
+    const check = new Set()
+    const newGrid = []
+
+    for (let i = 0; i < pageInfo.grid.length; i++) {
+      if (check.has(pageInfo.grid[i].field)) continue
+
+      newGrid.push(pageInfo.grid[i])
+      check.add(pageInfo.grid[i].field)
+    }
+
+    return { ...pageInfo, grid: newGrid }
+  }
 
   const initPage = useCallback(
     (query, user, meta) => {
@@ -970,7 +1045,7 @@ const List = props => {
       if (!pageInfo) return
       if (!Array.isArray(pageInfo.buttons)) pageInfo.buttons = []
       if (!Array.isArray(pageInfo.grid)) pageInfo.grid = []
-      setPageInfo(() => pageInfo)
+      setPageInfo(() => removeDuplicate(pageInfo))
 
       if (mode) setMode(mode)
       fetchData(pageInfo)
@@ -1024,11 +1099,23 @@ const List = props => {
     }
   }, [])
 
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      const elements = document.querySelectorAll(
+        'div[style*="pointer-events: none"][style*="color: rgba(130, 130, 130, 0.62)"][style*="bottom: 50%"][style*="right: 0px"]'
+      )
+      elements.forEach(element => {
+        element.style.display = 'none'
+      })
+    }, 10)
+
+    return () => clearTimeout(timeoutId)
+  }, [])
+
   if (!pageInfo) return <div>{t('message.notFound', { value: t('common.page') })}</div>
   else
     return (
       <Grid>
-        <PageHeader title={<Typography variant='h4'>{queryList?.name || pageInfo.name}</Typography>} />
         <Card style={{ marginTop: '1.5rem' }}>
           <CardHeader
             title={queryList?.name || pageInfo.name}
@@ -1048,7 +1135,7 @@ const List = props => {
               height: 600,
               width: '100%',
               '& .MuiDataGrid-cell': {
-                overflow: 'unset !important',
+                // overflow: 'unset !important',
                 whiteSpace: 'nowrap',
                 textOverflow: 'ellipsis',
                 '& span': {
@@ -1060,7 +1147,9 @@ const List = props => {
               }
             }}
           >
-            <DataGrid
+            <DataGridPro
+              initialState={{ pinnedColumns: { right: ['actions'] } }}
+              pagination
               columns={columns}
               rows={pageData}
               loading={loading}
@@ -1091,7 +1180,6 @@ const List = props => {
         </Card>
 
         {/* Dialog */}
-        {/* <ListModal open={isShowModal} setOpen={setIsShowModal} query={modalQuery} /> */}
         <Dialog
           fullWidth
           initialState={{
@@ -1103,11 +1191,18 @@ const List = props => {
           onClose={() => setIsShowModal(false)}
           TransitionComponent={Transition}
           onBackdropClick={() => setIsShowModal(false)}
-          sx={{ '& .MuiDialog-paper': { overflow: 'visible' } }}
+          sx={{ '& .MuiDialog-paper': { overflow: 'visible' }, zIndex: 1200 }}
         >
           <DialogContent>
             {CurrentModal && isShowModal && (
-              <CurrentModal query={modalQuery} openType='modal' closeModal={() => setIsShowModal(false)} />
+              <CurrentModal
+                query={modalQuery}
+                openType='modal'
+                fetchData={() => {
+                  fetchData(pageInfo)
+                }}
+                closeModal={() => setIsShowModal(false)}
+              />
             )}
           </DialogContent>
           <DialogActions>

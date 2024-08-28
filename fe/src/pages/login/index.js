@@ -126,9 +126,10 @@ const LoginPage = () => {
 
   useEffect(() => {
     getCapcha()
-    const strFeConfs = window.localStorage.getItem(authConfig.feConfigs)
-    if (strFeConfs) {
-      setFeConfigs(JSON.parse(strFeConfs))
+    const metaJson = window.localStorage.getItem('meta')
+    if (metaJson) {
+      const meta = JSON.parse(metaJson)
+      setFeConfigs(meta.confs)
     }
   }, [])
 
@@ -149,17 +150,11 @@ const LoginPage = () => {
   const onSubmit = data => {
     const { account, password, capchaText } = data
     auth.login({ account, password, captcha: `${capcha.id}|${capchaText}` }, message => {
+      getCapcha()
       toast.error(message)
     })
   }
   const imageSource = skin === 'bordered' ? 'auth-v2-login-illustration-bordered' : 'auth-v2-login-illustration'
-
-  const handleLoginGoogle = () => {
-    // auth.loginGoogle().then(res => {
-    //   console.log(res)
-    // })
-    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/api/auth/sign-in/account-google-federated`
-  }
 
   return (
     <Box className='content-right' sx={{ backgroundColor: 'background.paper' }}>
@@ -311,40 +306,42 @@ const LoginPage = () => {
               </Box>
               {capcha.id && (
                 <Box sx={{ mt: 4 }}>
-                  <div
-                    sx={{ height: '50px' }}
-                    dangerouslySetInnerHTML={{
-                      __html: capcha.data
-                    }}
-                  ></div>
-                  <Controller
-                    name='capchaText'
-                    control={control}
-                    rules={{ required: true }}
-                    render={({ field: { value, onChange, onBlur } }) => (
-                      <CustomTextField
-                        fullWidth
-                        label='Capcha'
-                        value={value}
-                        placeholder='xxxx'
-                        onBlur={onBlur}
-                        onChange={onChange}
-                        error={Boolean(errors.capchaText)}
-                        {...(errors.capchaText && { helperText: errors.capchaText.message })}
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position='end'>
-                              <IconButton edge='end' onClick={() => getCapcha()}>
-                                <Icon fontSize='1.25rem' icon={'tabler:refresh'} />
-                              </IconButton>
-                            </InputAdornment>
-                          )
-                        }}
-                      />
-                    )}
-                  />
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                    <div
+                      sx={{ height: '50px', mr: 2 }}
+                      dangerouslySetInnerHTML={{
+                        __html: capcha.data
+                      }}
+                    ></div>
+                    <Controller
+                      name='capchaText'
+                      control={control}
+                      rules={{ required: true }}
+                      render={({ field: { value, onChange, onBlur } }) => (
+                        <CustomTextField
+                          fullWidth
+                          value={value}
+                          placeholder='Captcha'
+                          onBlur={onBlur}
+                          onChange={onChange}
+                          error={Boolean(errors.capchaText)}
+                          {...(errors.capchaText && { helperText: errors.capchaText.message })}
+                          InputProps={{
+                            endAdornment: (
+                              <InputAdornment position='end'>
+                                <IconButton edge='end' onClick={() => getCapcha()}>
+                                  <Icon fontSize='1.25rem' icon={'tabler:refresh'} />
+                                </IconButton>
+                              </InputAdornment>
+                            )
+                          }}
+                        />
+                      )}
+                    />
+                  </Box>
                 </Box>
               )}
+
               <Box
                 sx={{
                   mb: 1.75,
@@ -382,21 +379,6 @@ const LoginPage = () => {
                 >
                   Create an account
                 </a>
-              </Box>
-              <Divider
-                sx={{
-                  color: 'text.disabled',
-                  '& .MuiDivider-wrapper': { px: 6 },
-                  fontSize: theme.typography.body2.fontSize,
-                  my: theme => `${theme.spacing(6)} !important`
-                }}
-              >
-                or
-              </Divider>
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <IconButton href='/' component={Link} sx={{ color: '#db4437' }} onClick={handleLoginGoogle}>
-                  <Icon icon='mdi:google' />
-                </IconButton>
               </Box>
             </form>
           </Box>

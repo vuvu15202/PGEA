@@ -2,27 +2,21 @@ export const WIDGETS = {
   string: [
     'Text',
     'TextArea',
-    // 'Image',
     'Enum',
     'EnumButton',
     'EnumMultipleSelect',
-    // 'Location',
     'RichText',
-    // 'ArrayImage',
     'SingleModel',
-    // 'Upload',
     'ArrayModel',
-    // 'ImageViewer',
-    // 'ImageSelectAble',
     'Password',
     'Captcha',
     'JSONViewer',
     'HTML'
   ],
   boolean: ['Checkbox'],
-  number: ['Text', 'Date', 'Time', 'Enum', 'EnumButton', 'EnumMultipleSelect', 'SingleModel', 'ArrayModel', 'Upload'],
-  // custom_form_json: ['CVSS'],
-  json: ['FormViewer', 'ArrayFormViewer']
+  number: ['Text', 'Date', 'Time', 'Enum', 'EnumButton', 'EnumMultipleSelect', 'SingleModel', 'ArrayModel', 'Upload']
+
+  // json: ['FormViewer', 'ArrayFormViewer']
 }
 
 export const BUTTON_COLORS = {
@@ -46,7 +40,8 @@ export const BUTTON_ACTIONS = {
   NONE: 'none',
   API: 'api',
   URL: 'url',
-  REPORT: 'report',
+
+  // REPORT: 'report',
   FORM_MODAL: 'formModal',
   LIST_MODAL: 'listModal',
   DISABLE: 'disable'

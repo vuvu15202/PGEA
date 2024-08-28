@@ -344,7 +344,11 @@ const ArrayModel = props => {
         fullWidth
         type='text'
         disabled={props?.schema?.disabled}
-        value={state.names.map(item => `[${item.name}]`).join(', ')}
+        value={
+          state.schema.showWithId
+            ? state.names.map(item => `[#${state.data.find(d => d.id === item.id)?.id} | ${item.name}]`).join(', ')
+            : state.names.map(item => `[${item.name}]`).join(', ')
+        }
         InputProps={{
           endAdornment: (
             <InputAdornment position='end'>

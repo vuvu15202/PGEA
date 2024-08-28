@@ -11,6 +11,11 @@ import JSONViewer from './JSONViewer'
 import RichText from './RichText'
 import Password from './Password'
 import Captcha from './Captcha'
+import ArrayImage from './ArrayImage'
+import EnumMultipleSelect from './EnumMultipleSelect'
+import EnumButton from './EnumButton'
+import Upload from './Upload'
+import FormViewer from './FormViewer'
 
 export default {
   Text,
@@ -20,10 +25,15 @@ export default {
   TimePicker,
   JSONViewer,
   ArrayModel,
+  ArrayImage,
   Enum,
   TextArea,
   HTML,
   RichText,
   Password,
-  Captcha
+  Captcha,
+  EnumMultipleSelect,
+  EnumButton,
+  Upload,
+  FormViewer
 }

@@ -56,7 +56,8 @@ const ButtonEditor = ({ button, apis = [], onSave, showSave, setShowSave, onCopy
       column: button.column || defaultButton.column,
       hideExpression: button.hideExpression || defaultButton.hideExpression,
       action: button.action || defaultButton.action,
-      reportName: button.reportName || defaultButton.reportName,
+
+      // reportName: button.reportName || defaultButton.reportName,
       modalQuery: button.modalQuery || defaultButton.modalQuery,
       url: button.url || defaultButton.url,
       target: button.target || defaultButton.target,
@@ -65,7 +66,8 @@ const ButtonEditor = ({ button, apis = [], onSave, showSave, setShowSave, onCopy
       confirm: button.confirm || defaultButton.confirm,
       backOnDone: button.backOnDone || defaultButton.backOnDone,
       backOnDoneHref: button.backOnDoneHref || defaultButton.backOnDoneHref,
-      embedUrl: button.embedUrl || defaultButton.embedUrl,
+
+      // embedUrl: button.embedUrl || defaultButton.embedUrl,
       type: button.type || defaultButton.type,
       showOnTop: button.showOnTop || defaultButton.showOnTop,
       showOnFormOnly: button.showOnFormOnly || defaultButton.showOnFormOnly
@@ -78,7 +80,6 @@ const ButtonEditor = ({ button, apis = [], onSave, showSave, setShowSave, onCopy
 
   const onSubmit = data => {
     const payload = removeUnuseData(data)
-    console.log(payload)
     onSave(data)
     setShowSave(false)
   }
@@ -349,7 +350,7 @@ const ButtonEditor = ({ button, apis = [], onSave, showSave, setShowSave, onCopy
             </Grid>
           </Grid>
         </ListItem>
-        {watchAction === BUTTON_ACTIONS.REPORT && (
+        {/* {watchAction === BUTTON_ACTIONS.REPORT && (
           <ListItem>
             <Grid container>
               <Grid item xs={4}>
@@ -372,7 +373,7 @@ const ButtonEditor = ({ button, apis = [], onSave, showSave, setShowSave, onCopy
               </Grid>
             </Grid>
           </ListItem>
-        )}
+        )} */}
         {(watchAction === BUTTON_ACTIONS.FORM_MODAL || watchAction === BUTTON_ACTIONS.LIST_MODAL) && (
           <ListItem>
             <Grid container>
@@ -574,7 +575,7 @@ const ButtonEditor = ({ button, apis = [], onSave, showSave, setShowSave, onCopy
             </Grid>
           </ListItem>
         )}
-        <ListItem>
+        {/* <ListItem>
           <Grid container>
             <Grid item xs={4}>
               {t('button.embedUrl')}
@@ -594,7 +595,7 @@ const ButtonEditor = ({ button, apis = [], onSave, showSave, setShowSave, onCopy
               />
             </Grid>
           </Grid>
-        </ListItem>
+        </ListItem> */}
         <ListItem>
           <Grid container>
             <Grid item xs={4}>

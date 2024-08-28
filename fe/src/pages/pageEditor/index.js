@@ -34,6 +34,7 @@ const PageEditor = () => {
   const [grid, setGrid] = useState(router.query?.mode === 'edit' ? null : [])
   const [read, setRead] = useState('')
   const [roles, setRoles] = useState(router.query?.mode === 'edit' ? null : [])
+  const [notFound, setNotFound] = useState(false)
 
   const [showSave, setShowSave] = useState(false)
 
@@ -44,12 +45,22 @@ const PageEditor = () => {
 
       if (query.mode === 'edit') {
         if (!query.id) {
-          return console.log('Khong co du lieu')
+          console.log('Khong co du lieu')
+          setNotFound(true)
+
+          return
         }
 
         const { data } = await pageApi.callPageApi(pageInfo, pageInfo.read, {
           queryInput: JSON.stringify({ id: query.id })
         })
+
+        if (!data.data.length) {
+          setNotFound(true)
+
+          return
+        }
+
         setAdditionalGrid(data.data[0]?.additionalGrid || {})
         setSchema(data.data[0]?.schema?.map(schema => ({ ...schema, id: v4() })) || [])
         setRoles(data.data[0]?.roles || [])
@@ -164,169 +175,182 @@ const PageEditor = () => {
     }
   }, [t, router.query.mode, onCreatePage])
 
-  console.log(tab);
-  
-
   return (
     <Grid>
-      <Card>
-        {renderHeader}
-        <CardContent>
-          <Grid container spacing={4}>
-            <Grid item xs={4}>
-              <CustomTextField
-                fullWidth
-                label={t('pageName')}
-                required
-                placeholder={t('placeholder.title')}
-                value={name}
-                onChange={e => setName(e.target.value)}
-                error={!name}
-                helperText={!name ? t('common.requiredField') : ''}
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <CustomTextField
-                fullWidth
-                label={t('common.description')}
-                placeholder={t('placeholder.description')}
-                value={desc}
-                onChange={e => setDesc(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <CustomTextField
-                select
-                fullWidth
-                label={t('loadDataFunction')}
-                placeholder={t('placeholder.loadDataFunction')}
-                value={read}
-                onChange={e => setRead(e.target.value)}
-              >
-                <MenuItem value='-1'>{t('common.none')}</MenuItem>
-                {apis?.map((api, index) => (
-                  <MenuItem key={index} value={api.name}>
-                    {api.name}
-                  </MenuItem>
-                ))}
-              </CustomTextField>
-            </Grid>
-            <Grid item xs={12}>
-              {roles && (
-                <>
-                <span style={{ fontSize: '13px', fontWeight: 500, color: '#0000008a' }}>
-                Nhóm quyền
-              </span>
-                <Widgets.ArrayModel
-                  schema={{ pageId: 4, modelSelectField: 'id,name', api: 'find_role', disabled: false }}
-                  value={roles}
-                  onChange={e => setRoles(e)}
-                  label='Role'
-                />
-                </>
-              )}
-            </Grid>
-            {tab === "4" && (
-              <Grid item xs={12}>
-                <Grid container spacing={4}>
-                  <Grid item xs={2} sx={{ display: 'flex', alignItems: 'center' }}>
-                    <span>Highlight: </span>
-                    <Widgets.Checkbox
-                      value={additionalGrid.highlight || false}
-                      onChange={e => setAdditionalGrid(prev => ({ ...prev, highlight: e }))}
-                    />
-                  </Grid>
-                  {additionalGrid.highlight && (
+      {notFound ? (
+        <Typography>Page Not Found</Typography>
+      ) : (
+        <>
+          <Card>
+            {renderHeader}
+            <CardContent>
+              <Grid container spacing={4}>
+                <Grid item xs={4}>
+                  <CustomTextField
+                    fullWidth
+                    label={t('pageName')}
+                    required
+                    placeholder={t('placeholder.title')}
+                    value={name}
+                    onChange={e => setName(e.target.value)}
+                    error={!name}
+                    helperText={!name ? t('common.requiredField') : ''}
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <CustomTextField
+                    fullWidth
+                    label={t('common.description')}
+                    placeholder={t('placeholder.description')}
+                    value={desc}
+                    onChange={e => setDesc(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <CustomTextField
+                    select
+                    fullWidth
+                    label={t('loadDataFunction')}
+                    placeholder={t('placeholder.loadDataFunction')}
+                    value={read}
+                    onChange={e => setRead(e.target.value)}
+                  >
+                    <MenuItem value='-1'>{t('common.none')}</MenuItem>
+                    {apis?.map((api, index) => (
+                      <MenuItem key={index} value={api.name}>
+                        {api.name}
+                      </MenuItem>
+                    ))}
+                  </CustomTextField>
+                </Grid>
+                <Grid item xs={12}>
+                  {roles && (
                     <>
-                      <Grid item xs={5}>
-                        <CustomTextField
-                          fullWidth
-                          label='Highlight Expression'
-                          value={additionalGrid.highlightExpression || ''}
-                          onChange={e => setAdditionalGrid(prev => ({ ...prev, highlightExpression: e.target.value }))}
-                        />
-                      </Grid>
-                      <Grid item xs={5}>
-                        <CustomTextField
-                          fullWidth
-                          label='Highlight color'
-                          value={additionalGrid.highlightColor || ''}
-                          onChange={e => setAdditionalGrid(prev => ({ ...prev, highlightColor: e.target.value }))}
-                        />
-                      </Grid>
+                      <span style={{ fontSize: '13px', fontWeight: 500, color: '#0000008a' }}>Nhóm quyền</span>
+                      <Widgets.ArrayModel
+                        schema={{ pageId: 4, modelSelectField: 'id,name', api: 'find_role', disabled: false }}
+                        value={roles}
+                        onChange={e => setRoles(e)}
+                        label='Role'
+                      />
                     </>
                   )}
                 </Grid>
+                {tab === '4' && (
+                  <Grid item xs={12}>
+                    <Grid container spacing={4}>
+                      <Grid item xs={2} sx={{ display: 'flex', alignItems: 'center' }}>
+                        <span>Highlight: </span>
+                        <Widgets.Checkbox
+                          value={additionalGrid.highlight || false}
+                          onChange={e => setAdditionalGrid(prev => ({ ...prev, highlight: e }))}
+                        />
+                      </Grid>
+                      {additionalGrid.highlight && (
+                        <>
+                          <Grid item xs={5}>
+                            <CustomTextField
+                              fullWidth
+                              label='Highlight Expression'
+                              value={additionalGrid.highlightExpression || ''}
+                              onChange={e =>
+                                setAdditionalGrid(prev => ({ ...prev, highlightExpression: e.target.value }))
+                              }
+                            />
+                          </Grid>
+                          <Grid item xs={5}>
+                            <CustomTextField
+                              fullWidth
+                              label='Highlight color'
+                              value={additionalGrid.highlightColor || ''}
+                              onChange={e => setAdditionalGrid(prev => ({ ...prev, highlightColor: e.target.value }))}
+                            />
+                          </Grid>
+                        </>
+                      )}
+                    </Grid>
+                  </Grid>
+                )}
               </Grid>
-            )}
-          </Grid>
-        </CardContent>
-      </Card>
-      <Card sx={{ mt: 4 }}>
-        <CardContent>
-          <TabContext value={String(tab)}>
-            <TabList
-              onChange={(_, value) => {
-                if (showSave && !window.confirm(t('message.notSaveSchemaConfirm'))) return
-                setTab(value)
-                showSave && setShowSave(false)
-              }}
-            >
-              <Tab value="1" label={t('common.form')} />
-              <Tab value="2" label={t('common.button')} />
-              <Tab value="3" label={t('common.api')} />
-              <Tab value="4" label={t('common.grid')} />
-              <Tab value="5" label={t('common.formJSON')} />
-            </TabList>
-            <TabPanel value="1">
-              {apis && schema && (
-                <FormTab
-                  apis={apis}
-                  schema={schema}
-                  onChange={newSchema => setSchema(newSchema)}
-                  showSave={showSave}
-                  setShowSave={setShowSave}
-                />
-              )}
-            </TabPanel>
-            <TabPanel value="2">
-              {apis && buttons && (
-                <ButtonTab
-                  apis={apis}
-                  buttons={buttons}
-                  onChange={newButtons => setButtons(newButtons)}
-                  showSave={showSave}
-                  setShowSave={setShowSave}
-                />
-              )}
-            </TabPanel>
-            <TabPanel value="3">
-              {apis && (
-                <APITab
-                  apis={apis}
-                  onChange={newAPIs => setApis(newAPIs)}
-                  showSave={showSave}
-                  setShowSave={setShowSave}
-                />
-              )}
-            </TabPanel>
-            <TabPanel value="4">
-              {apis && grid && (
-                <GridTab
-                  grid={grid}
-                  apis={apis}
-                  onChange={newGrid => setGrid(newGrid)}
-                  showSave={showSave}
-                  setShowSave={setShowSave}
-                />
-              )}
-            </TabPanel>
-            <TabPanel value="5">
-              <FormJSONTab />
-            </TabPanel>
-          </TabContext>
-        </CardContent>
-      </Card>
+            </CardContent>
+          </Card>
+          <Card sx={{ mt: 4 }}>
+            <CardContent>
+              <TabContext value={String(tab)}>
+                <TabList
+                  onChange={(_, value) => {
+                    if (showSave && !window.confirm(t('message.notSaveSchemaConfirm'))) return
+                    setTab(value)
+                    showSave && setShowSave(false)
+                  }}
+                >
+                  <Tab value='1' label={t('common.form')} />
+                  <Tab value='2' label={t('common.button')} />
+                  <Tab value='3' label={t('common.api')} />
+                  <Tab value='4' label={t('common.grid')} />
+                  <Tab value='5' label={t('common.formJSON')} />
+                </TabList>
+                <TabPanel value='1'>
+                  {apis && schema && (
+                    <FormTab
+                      apis={apis}
+                      schema={schema}
+                      onChange={newSchema => setSchema(newSchema)}
+                      showSave={showSave}
+                      setShowSave={setShowSave}
+                    />
+                  )}
+                </TabPanel>
+                <TabPanel value='2'>
+                  {apis && buttons && (
+                    <ButtonTab
+                      apis={apis}
+                      buttons={buttons}
+                      onChange={newButtons => setButtons(newButtons)}
+                      showSave={showSave}
+                      setShowSave={setShowSave}
+                    />
+                  )}
+                </TabPanel>
+                <TabPanel value='3'>
+                  {apis && (
+                    <APITab
+                      apis={apis}
+                      onChange={newAPIs => setApis(newAPIs)}
+                      showSave={showSave}
+                      setShowSave={setShowSave}
+                    />
+                  )}
+                </TabPanel>
+                <TabPanel value='4'>
+                  {apis && grid && (
+                    <GridTab
+                      grid={grid}
+                      apis={apis}
+                      onChange={newGrid => setGrid(newGrid)}
+                      showSave={showSave}
+                      setShowSave={setShowSave}
+                    />
+                  )}
+                </TabPanel>
+                <TabPanel value='5'>
+                  <FormJSONTab
+                    name={name}
+                    desc={desc}
+                    read={read}
+                    roles={roles}
+                    additionalGrid={additionalGrid}
+                    apis={apis}
+                    buttons={buttons}
+                    grid={grid}
+                    schema={schema}
+                  />
+                </TabPanel>
+              </TabContext>
+            </CardContent>
+          </Card>
+        </>
+      )}
     </Grid>
   )
 }
